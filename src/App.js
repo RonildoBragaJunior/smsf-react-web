@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import Layout from './hoc/Layout/Layout';
-// import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
-// import Checkout from './containers/Checkout/Checkout';
-// import Orders from './containers/Orders/Orders';
 import Auth from './containers/Auth/Auth';
-import MemberController from './containers/MemberController/MemberController';
+import MemberController from './containers/Member/MemberController';
+import SignUpController from './containers/SignUp/SignUpController'
+import PersonalInformationController from './containers/SignUp/PersonalInformationController'
 
 
 class App extends Component {
@@ -15,15 +14,12 @@ class App extends Component {
             <div>
                 <Layout>
                     <Switch>
-                        {/*<Route path="/checkout" component={Checkout} />*/}
-                        {/*<Route path="/orders" component={Orders} />*/}
-                        <Route path="/auth" component={Auth} />
-                        {/*<Route path="/" exact component={BurgerBuilder} />*/}
+                        <Route path="/signup/" component={SignUpController} />
+                        <Route path="/personal_information/:id/" component={PersonalInformationController} />
+                        <Route path="/member/" component={MemberController} />
+                        <Route path="/auth/" component={Auth} />
                     </Switch>
-                    <MemberController />
                 </Layout>
-
-
             </div>
         );
     }
