@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
 import axios from '../../axios-smsf';
 import Input from '../../components/UI/Input/Input';
-import classes from './SignUpController.module.css';
+import classes from './SignUp.module.css';
 
 class PersonalInformationController extends Component {
 
     state = {
         controls:{
-            mothers_maiden_name:{
+            tax_file_number:{
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'Mother maiden name'
+                    placeholder: 'Tax file number'
                 },
                 value: '',
                 validation: {
@@ -20,70 +20,15 @@ class PersonalInformationController extends Component {
                 valid: false,
                 touched: false
             },
-            gender: {
-                elementType: 'select',
-                elementConfig: {
-                    options: [
-                        {value: 'G', displayValue: 'Gender'},
-                        {value: 'F', displayValue: 'Female'},
-                        {value: 'M', displayValue: 'Male'}
-                    ]
-                },
-                value: 'G',
-                validation: {},
-                valid: true
-            },
-            birth_date:{
+            employer:{
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'Birth date - YYYY-MM-DD'
+                    placeholder: 'Employer'
                 },
                 value: '',
                 validation: {
                     required: true,
-                },
-                valid: false,
-                touched: false
-            },
-            place_of_birth:{
-                elementType: 'input',
-                elementConfig: {
-                    type: 'text',
-                    placeholder: 'Place of birth'
-                },
-                value: '',
-                validation: {
-                    required: true,
-                },
-                valid: false,
-                touched: false
-            },
-            place_of_residence:{
-                elementType: 'input',
-                elementConfig: {
-                    type: 'text',
-                    placeholder: 'Place of residence'
-                },
-                value: '',
-                validation: {
-                    required: true,
-                },
-                valid: false,
-                touched: false
-            },
-            postal_code: {
-                elementType: 'input',
-                elementConfig: {
-                    type: 'text',
-                    placeholder: 'Postal Code'
-                },
-                value: '',
-                validation: {
-                    required: true,
-                    minLength: 4,
-                    maxLength: 4,
-                    isNumeric: true
                 },
                 valid: false,
                 touched: false
@@ -102,19 +47,6 @@ class PersonalInformationController extends Component {
                 value: 'occupation',
                 validation: {required: false},
                 valid: true
-            },
-            employer:{
-                elementType: 'input',
-                elementConfig: {
-                    type: 'text',
-                    placeholder: 'Employer'
-                },
-                value: '',
-                validation: {
-                    required: true,
-                },
-                valid: false,
-                touched: false
             },
             annual_income:{
                 elementType: 'input',
@@ -152,20 +84,6 @@ class PersonalInformationController extends Component {
                 validation: {required: false},
                 valid: true
             },
-
-            tax_file_number:{
-                elementType: 'input',
-                elementConfig: {
-                    type: 'text',
-                    placeholder: 'Tax file number'
-                },
-                value: '',
-                validation: {
-                    required: true,
-                },
-                valid: false,
-                touched: false
-            },
             smsf_name:{
                 elementType: 'input',
                 elementConfig: {
@@ -178,6 +96,44 @@ class PersonalInformationController extends Component {
                 },
                 valid: false,
                 touched: false
+            },
+            sf_name:{
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Super fund name'
+                },
+                value: '',
+                validation: {
+                    required: true,
+                },
+                valid: false,
+                touched: false
+            },
+            member_account_number:{
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    placeholder: 'Member account number'
+                },
+                value: '',
+                validation: {
+                    required: true,
+                },
+                valid: false,
+                touched: false
+            },
+            rollover: {
+                elementType: 'select',
+                elementConfig: {
+                    options: [
+                        {value: 'P', displayValue: 'Partial roll over'},
+                        {value: 'F', displayValue: 'Full roll over'},
+                    ]
+                },
+                value: 'F',
+                validation: {},
+                valid: true
             }
         }
     }
@@ -229,13 +185,10 @@ class PersonalInformationController extends Component {
 
     postDataHandler = () => {
         let data = {
-            annual_income: this.state.controls.annual_income.value,
-            mothers_maiden_name: this.state.controls.mothers_maiden_name.value,
             tax_file_number: this.state.controls.tax_file_number.value,
-            occupation: this.state.controls.occupation.value,
             employer: this.state.controls.employer.value,
-            gender: this.state.controls.gender.value,
-            birth_date: this.state.controls.birth_date.value,
+            occupation: this.state.controls.occupation.value,
+            annual_income: this.state.controls.annual_income.value,
             smsfund: {
                 name: this.state.controls.smsf_name.value,
                 investment_strategies: [
@@ -244,21 +197,17 @@ class PersonalInformationController extends Component {
                     }
                 ]
             },
-            place_of_residence: {
-                street_name: this.state.controls.place_of_residence.value,
-                postal_code: this.state.controls.postal_code.value
-            },
-            place_of_birth: {
-                street_name: this.state.controls.place_of_birth.value,
-            }
+            sfunds: [{
+                name: this.state.controls.sf_name.value,
+                account_number: this.state.controls.member_account_number.value,
+                rollover: this.state.controls.rollover.value,
+            }]
+
         };
 
-        console.log(data);
-
-        axios.patch('smsf/smsf_member/' + this.props.match.params.id + '/', data)
+        axios.patch('smsf/signup/' + this.props.match.params.id + '/', data)
             .then(response => {
-                console.log('ep it is working');
-                console.log(response);
+                this.props.history.push({pathname: '/accept_fees/'+ this.props.match.params.id +'/'})
             })
             .catch(error => {
                 console.log(error.response)
@@ -290,9 +239,9 @@ class PersonalInformationController extends Component {
         return (
             <div>
                 <div className={classes.PersonalInformationForm}>
-                    <h3>We will need a bit more</h3>
+                    <h3>We are almost done</h3>
                     {form}
-                    <button className={classes.SignUpFormButton} onClick={this.postDataHandler}>Next</button>
+                    <button className={classes.OkButton} onClick={this.postDataHandler}>Next</button>
                 </div>
 
             </div>

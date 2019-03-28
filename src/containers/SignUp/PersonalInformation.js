@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
 import axios from '../../axios-smsf';
 import Input from '../../components/UI/Input/Input';
-import classes from './SignUpController.module.css';
+import classes from './SignUp.module.css';
 
-class SignUpController extends Component {
+class PersonalInformationController extends Component {
 
     state = {
         controls:{
-            first_name:{
+            place_of_residence:{
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'First Name'
+                    placeholder: 'Place of residence'
                 },
                 value: '',
                 validation: {
@@ -20,11 +20,24 @@ class SignUpController extends Component {
                 valid: false,
                 touched: false
             },
-            last_name:{
+            gender: {
+                elementType: 'select',
+                elementConfig: {
+                    options: [
+                        {value: 'G', displayValue: 'Gender'},
+                        {value: 'F', displayValue: 'Female'},
+                        {value: 'M', displayValue: 'Male'}
+                    ]
+                },
+                value: 'G',
+                validation: {},
+                valid: true
+            },
+            birth_date:{
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'Last Name'
+                    placeholder: 'Birth date - YYYY-MM-DD'
                 },
                 value: '',
                 validation: {
@@ -33,11 +46,11 @@ class SignUpController extends Component {
                 valid: false,
                 touched: false
             },
-            mobile_number:{
+            place_of_birth:{
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'Mobile Number'
+                    placeholder: 'Place of birth'
                 },
                 value: '',
                 validation: {
@@ -46,25 +59,11 @@ class SignUpController extends Component {
                 valid: false,
                 touched: false
             },
-            email: {
-                elementType: 'input',
-                elementConfig: {
-                    type: 'email',
-                    placeholder: 'Email Address'
-                },
-                value: '',
-                validation: {
-                    required: true,
-                    isEmail: true
-                },
-                valid: false,
-                touched: false
-            },
-            fund_balance:{
+            mothers_maiden_name:{
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'Estimated Super Balance'
+                    placeholder: 'Mother maiden name'
                 },
                 value: '',
                 validation: {
@@ -120,19 +119,23 @@ class SignUpController extends Component {
         this.setState({controls: updatedControls});
     }
 
+
     postDataHandler = () => {
-        const data = {
-            first_name: this.state.controls.first_name.value,
-            last_name: this.state.controls.last_name.value,
-            mobile_number: this.state.controls.mobile_number.value,
-            email: this.state.controls.email.value,
-            username: this.state.controls.email.value,
-            fund_balance: this.state.controls.fund_balance.value
+        let data = {
+            place_of_residence: {
+                street_name: this.state.controls.place_of_residence.value
+            },
+            gender: this.state.controls.gender.value,
+            birth_date: this.state.controls.birth_date.value,
+            place_of_birth: {
+                street_name: this.state.controls.place_of_birth.value,
+            },
+            mothers_maiden_name: this.state.controls.mothers_maiden_name.value
         };
 
-        axios.post('smsf/smsf_member/', data)
+        axios.patch('smsf/signup/' + this.props.match.params.id + '/', data)
             .then(response => {
-                this.props.history.push({pathname: '/personal_information/'+ response.data.id +'/'})
+                this.props.history.push({pathname: '/fund_information/'+ this.props.match.params.id +'/'})
             })
             .catch(error => {
                 console.log(error.response)
@@ -162,12 +165,11 @@ class SignUpController extends Component {
         ) );
 
         return (
-
             <div>
-                <div className={classes.SignUpForm}>
-                    <h3>Take your first step</h3>
+                <div className={classes.PersonalInformationForm}>
+                    <h3>We will need a bit more</h3>
                     {form}
-                    <button className={classes.SignUpFormButton} onClick={this.postDataHandler}>Next</button>
+                    <button className={classes.OkButton} onClick={this.postDataHandler}>Next</button>
                 </div>
 
             </div>
@@ -176,4 +178,4 @@ class SignUpController extends Component {
     }
 }
 
-export default SignUpController;
+export default PersonalInformationController;
