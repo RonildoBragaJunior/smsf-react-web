@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../../axios-smsf';
 
 import * as actionTypes from './actionTypes';
 
@@ -40,7 +40,7 @@ export const checkAuthTimeout = (expirationTime) => {
     };
 };
 
-export const auth = (email, password, isSignup) => {
+export const auth = (email, password) => {
     return dispatch => {
         dispatch(authStart());
 
@@ -49,12 +49,13 @@ export const auth = (email, password, isSignup) => {
             password: password,
         };
 
-        axios.post('api-token-auth/', authData)
+        axios.post('smsf/api-token-auth/', authData)
             .then(response => {
                 dispatch(authSuccess(response.data.token, authData['username']));
                 dispatch(checkAuthTimeout(3600));
             })
             .catch(err => {
+                console.log(err);
                 dispatch(authFail(err.response.data));
             });
     };

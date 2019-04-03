@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
-import axios from '../../axios-smsf';
 import Input from '../../components/UI/Input/Input';
 import classes from './SignUp.module.css';
+import {connect} from 'react-redux'
+import * as actions from '../../store/actions/index';
+import Spinner from '../../components/UI/Spinner/Spinner'
+import {checkValidity} from "../../store/utility";
 
 class PersonalInformationController extends Component {
 
@@ -138,44 +141,13 @@ class PersonalInformationController extends Component {
         }
     }
 
-    checkValidity(value, rules) {
-        let isValid = true;
-        if (!rules) {
-            return true;
-        }
-
-        if (rules.required) {
-            isValid = value.trim() !== '' && isValid;
-        }
-
-        if (rules.minLength) {
-            isValid = value.length >= rules.minLength && isValid
-        }
-
-        if (rules.maxLength) {
-            isValid = value.length <= rules.maxLength && isValid
-        }
-
-        if (rules.isEmail) {
-            const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-            isValid = pattern.test(value) && isValid
-        }
-
-        if (rules.isNumeric) {
-            const pattern = /^\d+$/;
-            isValid = pattern.test(value) && isValid
-        }
-
-        return isValid;
-    }
-
     inputChangedHandler = (event, controlName) => {
         const updatedControls = {
             ...this.state.controls,
             [controlName]: {
                 ...this.state.controls[controlName],
                 value: event.target.value,
-                valid: this.checkValidity(event.target.value, this.state.controls[controlName].validation),
+                valid: checkValidity(event.target.value, this.state.controls[controlName].validation),
                 touched: true
             }
         };
@@ -205,13 +177,15 @@ class PersonalInformationController extends Component {
 
         };
 
-        axios.patch('smsf/signup/' + this.props.match.params.id + '/', data)
-            .then(response => {
-                this.props.history.push({pathname: '/accept_fees/'+ this.props.match.params.id +'/'})
-            })
-            .catch(error => {
-                console.log(error.response)
-            });
+        this.props.onSignupFundInformation(
+            this.props.signup_basic_information_response.uuid,
+            data
+        );
+    }
+
+    componentDidUpdate(){
+        if (this.props.signup_fund_information_success)
+            this.props.history.push({pathname: '/accept_fees/'})
     }
 
 
@@ -236,18 +210,42 @@ class PersonalInformationController extends Component {
                 changed={( event ) => this.inputChangedHandler( event, formElement.id )} />
         ) );
 
+        let errorMessage = null;
+        if (this.props.error){
+            errorMessage = (
+                <p>{this.props.signup_basic_information_response}</p>
+            );
+        }
+
         return (
             <div>
+                <Spinner show={this.props.loading}/>
                 <div className={classes.PersonalInformationForm}>
+                    {errorMessage}
                     <h3>We are almost done</h3>
                     {form}
                     <button className={classes.OkButton} onClick={this.postDataHandler}>Next</button>
                 </div>
-
             </div>
-
         );
     }
 }
 
-export default PersonalInformationController;
+const mapStateToProps = state => {
+    return {
+        signup_fund_information: state.signup.signup_fund_information,
+        signup_fund_information_success: state.signup.signup_fund_information_success,
+        signup_fund_information_response: state.signup.signup_fund_information_response,
+        signup_basic_information_response: state.signup.signup_basic_information_response,
+        loading: state.signup.loading,
+        error: state.signup.error
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onSignupFundInformation: (uuid, fund_information) => dispatch(actions.signupFundInformation(uuid, fund_information))
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps) (PersonalInformationController);

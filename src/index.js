@@ -10,12 +10,14 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import authReducer from './store/reducers/auth';
 import smsfMemberReducer from './store/reducers/smsfMember';
+import signupReducer from './store/reducers/signup';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
     auth: authReducer,
-    smsfMember: smsfMemberReducer
+    smsfMember: smsfMemberReducer,
+    signup: signupReducer
 });
 
 const store = createStore(rootReducer, composeEnhancers(

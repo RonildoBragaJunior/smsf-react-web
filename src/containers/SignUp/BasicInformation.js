@@ -1,13 +1,16 @@
 import React, {Component} from 'react';
-import axios from '../../axios-smsf';
 import Input from '../../components/UI/Input/Input';
 import classes from './SignUp.module.css';
+import {checkValidity} from "../../store/utility";
+import {connect} from 'react-redux'
+import * as actions from '../../store/actions/index';
+import Spinner from '../../components/UI/Spinner/Spinner'
 
 class BasicInformation extends Component {
 
     state = {
-        controls:{
-            first_name:{
+        controls: {
+            first_name: {
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
@@ -16,11 +19,9 @@ class BasicInformation extends Component {
                 value: '',
                 validation: {
                     required: true,
-                },
-                valid: false,
-                touched: false
+                }
             },
-            middle_name:{
+            middle_name: {
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
@@ -29,11 +30,9 @@ class BasicInformation extends Component {
                 value: '',
                 validation: {
                     required: true,
-                },
-                valid: false,
-                touched: false
+                }
             },
-            last_name:{
+            last_name: {
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
@@ -42,11 +41,9 @@ class BasicInformation extends Component {
                 value: '',
                 validation: {
                     required: true,
-                },
-                valid: false,
-                touched: false
+                }
             },
-            mobile_number:{
+            mobile_number: {
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
@@ -55,9 +52,7 @@ class BasicInformation extends Component {
                 value: '',
                 validation: {
                     required: true,
-                },
-                valid: false,
-                touched: false
+                }
             },
             email: {
                 elementType: 'input',
@@ -69,11 +64,9 @@ class BasicInformation extends Component {
                 validation: {
                     required: true,
                     isEmail: true
-                },
-                valid: false,
-                touched: false
+                }
             },
-            fund_balance:{
+            fund_balance: {
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
@@ -82,42 +75,10 @@ class BasicInformation extends Component {
                 value: '',
                 validation: {
                     required: true,
-                },
-                valid: false,
-                touched: false
+                    isNumeric: true,
+                }
             }
         }
-    }
-
-    checkValidity(value, rules) {
-        let isValid = true;
-        if (!rules) {
-            return true;
-        }
-
-        if (rules.required) {
-            isValid = value.trim() !== '' && isValid;
-        }
-
-        if (rules.minLength) {
-            isValid = value.length >= rules.minLength && isValid
-        }
-
-        if (rules.maxLength) {
-            isValid = value.length <= rules.maxLength && isValid
-        }
-
-        if (rules.isEmail) {
-            const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-            isValid = pattern.test(value) && isValid
-        }
-
-        if (rules.isNumeric) {
-            const pattern = /^\d+$/;
-            isValid = pattern.test(value) && isValid
-        }
-
-        return isValid;
     }
 
     inputChangedHandler = (event, controlName) => {
@@ -126,7 +87,7 @@ class BasicInformation extends Component {
             [controlName]: {
                 ...this.state.controls[controlName],
                 value: event.target.value,
-                valid: this.checkValidity(event.target.value, this.state.controls[controlName].validation),
+                valid: checkValidity(event.target.value, this.state.controls[controlName].validation),
                 touched: true
             }
         };
@@ -144,26 +105,24 @@ class BasicInformation extends Component {
             sfunds: [{balance: this.state.controls.fund_balance.value}]
         };
 
-        axios.post('smsf/signup/', data)
-            .then(response => {
-                this.props.history.push({pathname: '/personal_information/'+ response.data.uuid +'/'})
-            })
-            .catch(error => {
-                console.log(error.response)
-            });
+        this.props.onSignupBasicInformation(data);
     }
 
+    componentDidUpdate(){
+        if (this.props.signup_basic_information_success)
+            this.props.history.push({pathname: '/personal_information/'})
+    }
 
-    render () {
+    render() {
         const formElementsArray = [];
-        for ( let key in this.state.controls ) {
-            formElementsArray.push( {
+        for (let key in this.state.controls) {
+            formElementsArray.push({
                 id: key,
                 config: this.state.controls[key]
-            } );
+            });
         }
 
-        let form = formElementsArray.map( formElement => (
+        let form = formElementsArray.map(formElement => (
             <Input
                 key={formElement.id}
                 elementType={formElement.config.elementType}
@@ -172,22 +131,45 @@ class BasicInformation extends Component {
                 invalid={!formElement.config.valid}
                 shouldValidate={formElement.config.validation}
                 touched={formElement.config.touched}
-                changed={( event ) => this.inputChangedHandler( event, formElement.id )} />
-        ) );
+                changed={(event) => this.inputChangedHandler(event, formElement.id)}/>
+        ));
+
+        let errorMessage = null;
+        if (this.props.error){
+            errorMessage = (
+                <p>{this.props.signup_basic_information_response}</p>
+            );
+        }
 
         return (
-
             <div>
+                <Spinner show={this.props.loading}/>
                 <div className={classes.SignUpForm}>
+                    {errorMessage}
                     <h3>Take your first step.</h3>
                     {form}
                     <button className={classes.OkButton} onClick={this.postDataHandler}>Next</button>
                 </div>
-
             </div>
 
         );
     }
 }
 
-export default BasicInformation;
+const mapStateToProps = state => {
+    return {
+        signup_basic_information: state.signup.signup_basic_information,
+        signup_basic_information_success: state.signup.signup_basic_information_success,
+        signup_basic_information_response: state.signup.signup_basic_information_response,
+        loading: state.signup.loading,
+        error: state.signup.error
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onSignupBasicInformation: (basic_information) => dispatch(actions.signupBasicInformation(basic_information))
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(BasicInformation);

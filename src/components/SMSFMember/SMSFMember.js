@@ -4,15 +4,14 @@ import React from 'react';
 const member = ( props ) => {
 
     return (
-        <div>
-            <article onClick={props.clicked}>
-                <p>
-                    {props.member.id} -
-                    {props.member.username} -
-                    {props.member.email}
-                </p>
-            </article>
-        </div>
+        <tr onClick={props.clicked}>
+            <th scope="row">{props.member.id}</th>
+            <td>{props.member.first_name}</td>
+            <td>{props.member.last_name}</td>
+            <td>{props.member.email}</td>
+            <td>{props.member.mobile_number}</td>
+            <td>{props.member.tax_file_number}</td>
+        </tr>
     );
 };
 
