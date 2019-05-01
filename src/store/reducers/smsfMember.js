@@ -5,7 +5,9 @@ const initialState = {
     smsf_members: null,
     search_parameters: null,
     selected_smsf_member: null,
+    selected_smsf_member_form: null,
     show_selected_smsf_member: false,
+    show_new_smsf_member: false,
     loading: false,
     error: false
 }
@@ -63,10 +65,10 @@ const reducer = (state = initialState, action) => {
         case actionTypes.SELECT_SMSF_MEMBER_SUCCESS:
             return{
                 ...state,
-                smsf_member_details: action.smsf_member_details,
+                selected_smsf_member: action.selected_smsf_member,
                 show_selected_smsf_member: true,
                 loading: false,
-                error: false
+                error: false,
             };
         case actionTypes.SELECT_SMSF_MEMBER_FAIL:
             return{
@@ -86,7 +88,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.SAVE_SMSF_MEMBER_SUCCESS:
             return{
                 ...state,
-                smsf_member_details: action.smsf_member_details,
+                selected_smsf_member: action.selected_smsf_member,
                 show_selected_smsf_member: false,
                 loading: false,
                 error: false

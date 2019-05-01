@@ -16,9 +16,7 @@ const input = ( props ) => {
                 className={inputClasses.join(' ')}
                 {...props.elementConfig}
                 value={props.value}
-                onChange={props.changed}
-                onBlur={props.onblur}
-            />;
+                onChange={props.changed} />;
             break;
         case ( 'textarea' ):
             inputElement = <textarea

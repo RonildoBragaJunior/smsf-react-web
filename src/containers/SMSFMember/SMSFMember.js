@@ -3,8 +3,8 @@ import {connect} from 'react-redux';
 
 import Aux from '../../hoc/Aux/Aux';
 import Member from '../../components/SMSFMember/SMSFMember';
-import SMSFMemberDetails from '../../containers/SMSFMember/SMSFMemberDetails'
-import NewMember from '../../components/SMSFMember/NewSMSFMember'
+import SMSFMemberDetails from './Details/SMSFMemberDetails'
+import NewMember from './NewSMSFMember'
 import * as actions from '../../store/actions/index';
 import Spinner from '../../components/UI/Spinner/Spinner'
 import Input from '../../components/UI/Input/Input';
@@ -15,6 +15,20 @@ class SMSFMember extends Component {
     componentDidMount(){
         if(!this.props.smsf_members)
             this.props.onFetchSmsfMembers(this.props.token);
+    }
+
+    postDataHandler = () => {
+        const data = {
+            // username: this.state.controls.email.value,
+            // email: this.state.controls.email.value,
+            // first_name: this.state.controls.first_name.value,
+            // middle_name: this.state.controls.middle_name.value,
+            // last_name: this.state.controls.last_name.value,
+            // mobile_number: this.state.controls.mobile_number.value,
+            // sfunds: [{balance: this.state.controls.fund_balance.value}]
+        };
+
+        this.props.onSaveSmsfMember(data);
     }
 
     render () {
@@ -43,9 +57,9 @@ class SMSFMember extends Component {
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">First name</th>
-                                    <th scope="col">Last name</th>
-                                    <th scope="col">Email</th>
+                                    <th scope="col" className="text-left">First name</th>
+                                    <th scope="col" className="text-left">Last name</th>
+                                    <th scope="col" className="text-left">Email</th>
                                     <th scope="col">Mobile number</th>
                                     <th scope="col">Tax file number</th>
                                 </tr>
@@ -55,12 +69,10 @@ class SMSFMember extends Component {
                             </tbody>
                         </table>
                     </div>
-                    <section>
-                        <SMSFMemberDetails show={this.props.show_selected_smsf_member}/>
-                    </section>
-                    <section>
-                        <NewMember />
-                    </section>
+                    <button className={classes.OkButton} onClick={this.postDataHandler}>NEW</button>
+
+                    <SMSFMemberDetails show={this.props.show_selected_smsf_member}/>
+                    <NewMember />
                 </div>
             </Aux>
         );
