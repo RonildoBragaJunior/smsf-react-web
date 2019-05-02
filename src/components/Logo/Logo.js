@@ -1,12 +1,10 @@
 import React from 'react';
 
 import squirrelLogo from '../../assets/images/squirrel-logo.svg';
-import classes from './Logo.module.css';
+import Logo from './Logo.styles';
 
 const logo = (props) => (
-    <div className={classes.Logo} style={{height: props.height}}>
-        <img src={squirrelLogo} alt="Squirrel" />
-    </div>
+    <Logo src={squirrelLogo} alt="Squirrel" style={{height: props.height}}/>
 );
 
 export default logo;

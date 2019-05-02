@@ -19,14 +19,28 @@
     display: block;
     width: 100%;
     box-sizing: border-box;
+    border-radius: 3px;
+    transition: all .5s;
 }
 
 .InputElement:focus {
     outline: none;
-    background-color: #ccc;
+    transform: translate(1px, -2px);
+    box-shadow: -2px 4px 2px 0px rgba(0,0,0,0.3);
+    /* background-color: #ccc; */
 }
 
 .Invalid {
     border: 1px solid red;
     background-color: #FDA49A;
+}
+
+@keyframes animation3d {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translate(1px, -2px);
+        box-shadow: -2px 4px 2px 0px rgba(0,0,0,0.4);
+    }
 }
