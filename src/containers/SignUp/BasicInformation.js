@@ -108,6 +108,10 @@ class BasicInformation extends Component {
         this.props.onSignupBasicInformation(data);
     }
 
+    componentDidMount() {
+        this.props.history.push({pathname: '/signup/'})
+    }
+
     componentDidUpdate(){
         if (this.props.signup_basic_information_success)
             this.props.history.push({pathname: '/personal_information/'})

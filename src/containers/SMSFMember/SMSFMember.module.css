@@ -1,7 +1,7 @@
 .SmsfMember{
     margin: 20px auto;
     width: 1200px;
-    background: #F8F5F4;
+    /* background: #F8F5F4; */
     padding: 35px;
     border-radius: 3px;
     text-align: center;
@@ -40,8 +40,8 @@
 }
 
 .OkButton {
-    padding: 10px;
-    min-width: 120px;
+    padding: 7px 15px;
+    min-width: 180px;
     background: #11CAA1;
     color: white;
     border: 2px solid #11CAA1;
@@ -53,21 +53,16 @@
     -moz-appearance: none;
     -webkit-appearance: none;
     transition: all .3s;
+    margin-top: 20px;
+    transition: all .5s;
+    outline: none;
+    width: calc(100% - 20px);
 }
 
-
-.Modal {
-    position: fixed;
-    z-index: 500;
-    background-color: white;
-    width: 70%;
-    border: 1px solid #ccc;
-    box-shadow: 1px 1px 1px black;
-    padding: 16px;
-    left: 10%;
-    top: 10%;
-    box-sizing: border-box;
-    transition: all 0.3s ease-out;
+.OkButton:hover, .OkButton:focus {
+    outline: none;
+    transform: translate(1px, -2px);
+    box-shadow: -2px 4px 2px 0px rgba(0,0,0,0.3);
 }
 
 @media (min-width: 600px) {

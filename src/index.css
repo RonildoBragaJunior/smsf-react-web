@@ -3,6 +3,7 @@ body {
   padding: 0;
   min-height: 100vh;
   font-family: 'Montserrat', sans-serif;
-  background-image: linear-gradient(to bottom, #262b34, #1d3b4b, #004e59, #00605b, #0c704e);
-  background-repeat: no-repeat;
+  background: #44454F top left fixed;
+  background-image: url(https://www.squirrelsuper.com.au/images/nav-background-2x.png);
+  background-size: 100px 100px;
 }

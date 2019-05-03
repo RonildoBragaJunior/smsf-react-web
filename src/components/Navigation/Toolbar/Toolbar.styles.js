@@ -4,7 +4,9 @@ const Toolbar = styled.header`
   width: 100%;
   position: sticky;
   top: 0;
-  background-color: #262b34;
+  background: #44454F top left fixed;
+  background-image: url(https://www.squirrelsuper.com.au/images/nav-background-2x.png);
+  background-size: 100px 100px;
   display: flex;
   justify-content: center;
   padding: 5px 20px;
@@ -13,7 +15,7 @@ const Toolbar = styled.header`
 
   .limit-clearfix {
     width: 100%;
-    max-width: 1024px;
+    max-width: 1380px;
     display: flex;
     justify-content: space-between;
     align-items: center;
