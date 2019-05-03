@@ -5,9 +5,11 @@
     flex-flow: column;
     justify-content: space-around;
     align-items: center;
-    padding: 10px 0;
+    padding: 20px 0;
     box-sizing: border-box;
     cursor: pointer;
+    position: absolute;
+    left: 15px;
 }
 
 .DrawerToggle div {
