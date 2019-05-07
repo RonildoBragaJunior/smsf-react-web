@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-    baseURL: 'http://squirrelsuper-prod.dukpyxxszk.us-west-2.elasticbeanstalk.com'
+    baseURL: 'https://api.squirrelsuper.com'
     //baseURL: 'http://localhost:8000/'
 });
 
