@@ -16,7 +16,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "deploy": "aws s3 sync build/ s3://squirrel-web",
+    "deploy": "aws s3 sync build/ s3://squirrelsuper-smsf",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
