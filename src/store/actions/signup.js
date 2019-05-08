@@ -1,6 +1,44 @@
 import axios from '../../axios-smsf';
 
 import * as actionTypes from './actionTypes';
+//***************** Signup details *****************
+
+export const signupDetailsStart = (signup_details) =>{
+    return {
+        type: actionTypes.SIGNUP_DT_START,
+        signup_details: signup_details,
+    }
+}
+
+export const signupDetailsSuccess = (response) =>{
+    return {
+        type: actionTypes.SIGNUP_DT_SUCCESS,
+        signup_details_response: response,
+    }
+}
+
+export const signupDetailsFail = (response) =>{
+    return {
+        type: actionTypes.SIGNUP_DT_FAIL,
+        signup_details_response: response,
+    }
+}
+
+export const signupDetails = (signup_details) => {
+    return dispatch => {
+        dispatch(signupDetailsStart(signup_details));
+
+        axios.post('smsf/signup/', signup_details)
+            .then(response => {
+                dispatch(signupDetailsSuccess(response.data));
+            })
+            .catch(error => {
+                console.log(error);
+                dispatch(signupDetailsFail(String(error)));
+            });
+    };
+};
+
 
 //***************** Basic information signup *****************
 

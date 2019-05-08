@@ -1,6 +1,9 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
+    signup_details: null,
+    signup_details_success: null,
+    signup_details_response: null,
     signup_basic_information: null,
     signup_basic_information_success: null,
     signup_basic_information_response: null,
@@ -19,6 +22,31 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type){
+        case actionTypes.SIGNUP_DT_START:
+            return {
+                ...state,
+                signup_details: action.signup_details,
+                loading: true,
+                error: false
+            }
+        case actionTypes.SIGNUP_DT_SUCCESS:
+            return {
+                ...state,
+                signup_details_success: true,
+                signup_details_response: action.signup_details_response,
+                loading: false,
+                error: false
+            }
+        case actionTypes.SIGNUP_DT_FAIL:
+            return {
+                ...state,
+                signup_details_success: false,
+                signup_details_response: action.signup_details_response,
+                loading: false,
+                error: true
+            }
+
+
         case actionTypes.SIGNUP_BI_START:
             return {
                 ...state,

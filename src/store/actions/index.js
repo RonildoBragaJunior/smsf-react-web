@@ -10,6 +10,7 @@ export {
 } from './smsfMember';
 
 export {
+    signupDetails,
     signupBasicInformation,
     signupPersonalInformation,
     signupFundInformation,

@@ -14,7 +14,7 @@ class PersonalInformationController extends Component {
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'Place of residence'
+                    placeholder: 'Residential address'
                 },
                 value: '',
                 validation: {
@@ -150,7 +150,7 @@ class PersonalInformationController extends Component {
                 <Spinner show={this.props.loading}/>
                 <div className={classes.PersonalInformationForm}>
                     {errorMessage}
-                    <h3>We will need a bit more</h3>
+                    <h3>Personal information</h3>
                     {form}
                     <button className={classes.OkButton} onClick={this.postDataHandler}>Next</button>
                 </div>

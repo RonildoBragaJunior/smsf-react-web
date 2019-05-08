@@ -6,65 +6,37 @@ import {connect} from 'react-redux'
 import * as actions from '../../store/actions/index';
 import Spinner from '../../components/UI/Spinner/Spinner'
 
-class BasicInformation extends Component {
+class SignupDetails extends Component {
 
     state = {
         controls: {
-            first_name: {
+            email: {
                 elementType: 'input',
                 elementConfig: {
-                    type: 'text',
-                    placeholder: 'First Name'
+                    type: 'email',
+                    placeholder: 'Email Address'
                 },
                 value: '',
                 validation: {
                     required: true,
-                }
+                    isEmail: true
+                },
+                valid: false,
+                touched: false
             },
-            middle_name: {
+            password: {
                 elementType: 'input',
                 elementConfig: {
-                    type: 'text',
-                    placeholder: 'Middle Name'
+                    type: 'password',
+                    placeholder: 'Password'
                 },
                 value: '',
                 validation: {
                     required: true,
-                }
-            },
-            last_name: {
-                elementType: 'input',
-                elementConfig: {
-                    type: 'text',
-                    placeholder: 'Last Name'
+                    minLength: 6
                 },
-                value: '',
-                validation: {
-                    required: true,
-                }
-            },
-            mobile_number: {
-                elementType: 'input',
-                elementConfig: {
-                    type: 'text',
-                    placeholder: 'Mobile Number'
-                },
-                value: '',
-                validation: {
-                    required: true,
-                }
-            },
-            fund_balance: {
-                elementType: 'input',
-                elementConfig: {
-                    type: 'text',
-                    placeholder: 'Estimated Super Balance'
-                },
-                value: '',
-                validation: {
-                    required: true,
-                    isNumeric: true,
-                }
+                valid: false,
+                touched: false
             }
         }
     }
@@ -86,23 +58,20 @@ class BasicInformation extends Component {
         const data = {
             username: this.state.controls.email.value,
             email: this.state.controls.email.value,
-            first_name: this.state.controls.first_name.value,
-            middle_name: this.state.controls.middle_name.value,
-            last_name: this.state.controls.last_name.value,
-            mobile_number: this.state.controls.mobile_number.value,
-            sfunds: [{balance: this.state.controls.fund_balance.value}]
+            password: this.state.controls.password.value
+
         };
 
-        this.props.onSignupBasicInformation(data);
+        this.props.onSignupDetails(data);
     }
 
     componentDidMount() {
-
+        this.props.history.push({pathname: '/signup_details/'})
     }
 
     componentDidUpdate(){
-        if (this.props.signup_basic_information_success)
-            this.props.history.push({pathname: '/personal_information/'})
+        if (this.props.signup_details_success)
+            this.props.history.push({pathname: '/basic_information/'})
     }
 
     render() {
@@ -129,7 +98,7 @@ class BasicInformation extends Component {
         let errorMessage = null;
         if (this.props.error){
             errorMessage = (
-                <p>{this.props.signup_basic_information_response}</p>
+                <p>{this.props.signup_response}</p>
             );
         }
 
@@ -138,7 +107,7 @@ class BasicInformation extends Component {
                 <Spinner show={this.props.loading}/>
                 <div className={classes.SignUpForm}>
                     {errorMessage}
-                    <h3>Basic information</h3>
+                    <h3>Take your first step.</h3>
                     {form}
                     <button className={classes.OkButton} onClick={this.postDataHandler}>Next</button>
                 </div>
@@ -150,9 +119,9 @@ class BasicInformation extends Component {
 
 const mapStateToProps = state => {
     return {
-        signup_basic_information: state.signup.signup_basic_information,
-        signup_basic_information_success: state.signup.signup_basic_information_success,
-        signup_basic_information_response: state.signup.signup_basic_information_response,
+        signup_details: state.signup.signup_details,
+        signup_details_success: state.signup.signup_details_success,
+        signup_details_response: state.signup.signup_details_response,
         loading: state.signup.loading,
         error: state.signup.error
     };
@@ -160,8 +129,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onSignupBasicInformation: (basic_information) => dispatch(actions.signupBasicInformation(basic_information))
+        onSignupDetails: (signup_details) => dispatch(actions.signupDetails(signup_details))
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(BasicInformation);
+export default connect(mapStateToProps, mapDispatchToProps)(SignupDetails);
