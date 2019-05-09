@@ -1,180 +1,48 @@
 import React, {Component} from 'react';
-import Input from '../../components/UI/Input/Input';
 import classes from './SignUp.module.css';
 import {connect} from 'react-redux'
 import * as actions from '../../store/actions/index';
 import Spinner from '../../components/UI/Spinner/Spinner'
-import {checkValidity} from "../../store/utility";
 
 class PersonalInformationController extends Component {
 
-    state = {
-        controls:{
-            tax_file_number:{
-                elementType: 'input',
-                elementConfig: {
-                    type: 'text',
-                    placeholder: 'Tax file number'
-                },
-                value: '',
-                validation: {
-                    required: true,
-                },
-                valid: false,
-                touched: false
-            },
-            employer:{
-                elementType: 'input',
-                elementConfig: {
-                    type: 'text',
-                    placeholder: 'Employer'
-                },
-                value: '',
-                validation: {
-                    required: true,
-                },
-                valid: false,
-                touched: false
-            },
-            occupation: {
-                elementType: 'select',
-                elementConfig: {
-                    options: [
-                        {value: 'occupation', displayValue: 'Occupation'},
-                        {value: 'computer programmer', displayValue: 'Computer Programmer'},
-                        {value: 'chief executive officer', displayValue: 'Chief Executive Officer'},
-                        {value: 'chief financial officer', displayValue: 'Chief Financial Officer'},
-                        {value: 'secretary', displayValue: 'Secretary'},
-                    ]
-                },
-                value: 'occupation',
-                validation: {required: false},
-                valid: true
-            },
-            annual_income:{
-                elementType: 'input',
-                elementConfig: {
-                    type: 'text',
-                    placeholder: 'Annual income'
-                },
-                value: '',
-                validation: {
-                    required: true,
-                    isNumeric: true,
-                },
-                valid: false,
-                touched: false
-            },
-            investment_strategies: {
-                elementType: 'select',
-                elementConfig: {
-                    options: [
-                        {value: 'investment strategy', displayValue: 'Investment strategy'},
-                        {value: 'residential property', displayValue: 'Residential property'},
-                        {value: 'australian shares', displayValue: 'Australian shares'},
-                        {value: 'international shares', displayValue: 'International shares'},
-                        {value: 'term deposits and fixed interest', displayValue: 'Term deposits and fixed interest'},
-                        {value: 'cryptocurrencies', displayValue: 'Cryptocurrencies'},
-                        {value: 'commercial property', displayValue: 'Commercial property'},
-                        {value: 'collectibles', displayValue: 'Collectibles'},
-                        {value: 'managed funds', displayValue: 'Managed funds'},
-                        {value: 'cash', displayValue: 'Cash'},
-                        {value: 'precious metal', displayValue: 'Precious metal'},
-                        {value: 'other', displayValue: 'Other'},
-                    ]
-                },
-                value: 'investment strategy',
-                validation: {required: false},
-                valid: true
-            },
-            smsf_name:{
-                elementType: 'input',
-                elementConfig: {
-                    type: 'text',
-                    placeholder: 'SMSF name'
-                },
-                value: '',
-                validation: {
-                    required: true,
-                },
-                valid: false,
-                touched: false
-            },
-            sf_name:{
-                elementType: 'input',
-                elementConfig: {
-                    type: 'text',
-                    placeholder: 'Super fund name'
-                },
-                value: '',
-                validation: {
-                    required: true,
-                },
-                valid: false,
-                touched: false
-            },
-            member_account_number:{
-                elementType: 'input',
-                elementConfig: {
-                    type: 'text',
-                    placeholder: 'Member account number'
-                },
-                value: '',
-                validation: {
-                    required: true,
-                },
-                valid: false,
-                touched: false
-            },
-            rollover: {
-                elementType: 'select',
-                elementConfig: {
-                    options: [
-                        {value: 'P', displayValue: 'Partial roll over'},
-                        {value: 'F', displayValue: 'Full roll over'},
-                    ]
-                },
-                value: 'F',
-                validation: {},
-                valid: true
-            }
-        }
-    }
-
-    inputChangedHandler = (event, controlName) => {
-        const updatedControls = {
-            ...this.state.controls,
-            [controlName]: {
-                ...this.state.controls[controlName],
-                value: event.target.value,
-                valid: checkValidity(event.target.value, this.state.controls[controlName].validation),
-                touched: true
-            }
+    constructor(props) {
+        super(props)
+        this.state = {
+            tax_file_number: '',
+            employer: '',
+            occupation: '',
+            annual_income: '',
+            investment_strategies: '',
+            smsf_name: '',
+            sf_name: '',
+            member_account_number: '',
+            rollover: ''
         };
-        this.setState({controls: updatedControls});
+        this.handleInputChange = this.handleInputChange.bind(this);
     }
 
+    handleInputChange(event) {
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+    }
 
     postDataHandler = () => {
         let data = {
-            tax_file_number: this.state.controls.tax_file_number.value,
-            employer: this.state.controls.employer.value,
-            occupation: this.state.controls.occupation.value,
-            annual_income: this.state.controls.annual_income.value,
+            tax_file_number: this.state.tax_file_number,
+            employer: this.state.employer,
+            occupation: this.state.occupation,
+            annual_income: this.state.annual_income,
             smsfund: {
-                name: this.state.controls.smsf_name.value,
-                investment_strategies: [
-                    {
-                        name: this.state.controls.investment_strategies.value
-                    }
-                ]
+                name: this.state.smsf_name,
+                investment_strategies: [{name: this.state.investment_strategies}]
             },
             sfunds: [{
-                name: this.state.controls.sf_name.value,
-                account_number: this.state.controls.member_account_number.value,
-                rollover: this.state.controls.rollover.value,
+                name: this.state.sf_name,
+                account_number: this.state.member_account_number,
+                rollover: this.state.rollover,
             }]
-
         };
 
         this.props.onSignupFundInformation(
@@ -188,28 +56,7 @@ class PersonalInformationController extends Component {
             this.props.history.push({pathname: '/accept_fees/'})
     }
 
-
     render () {
-        const formElementsArray = [];
-        for ( let key in this.state.controls ) {
-            formElementsArray.push( {
-                id: key,
-                config: this.state.controls[key]
-            } );
-        }
-
-        let form = formElementsArray.map( formElement => (
-            <Input
-                key={formElement.id}
-                elementType={formElement.config.elementType}
-                elementConfig={formElement.config.elementConfig}
-                value={formElement.config.value}
-                invalid={!formElement.config.valid}
-                shouldValidate={formElement.config.validation}
-                touched={formElement.config.touched}
-                changed={( event ) => this.inputChangedHandler( event, formElement.id )} />
-        ) );
-
         let errorMessage = null;
         if (this.props.error){
             errorMessage = (
@@ -223,7 +70,71 @@ class PersonalInformationController extends Component {
                 <div className={classes.PersonalInformationForm}>
                     {errorMessage}
                     <h3>We are almost done</h3>
-                    {form}
+
+                    <div>
+                        <input
+                            key="tax_file_number"
+                            name="tax_file_number"
+                            value={this.state.tax_file_number}
+                            onChange={this.handleInputChange}/>
+                    </div>
+                    <div>
+                        <input
+                            key="employer"
+                            name="employer"
+                            value={this.state.employer}
+                            onChange={this.handleInputChange}/>
+                    </div>
+                    <div>
+                        <input
+                            key="occupation"
+                            name="occupation"
+                            value={this.state.occupation}
+                            onChange={this.handleInputChange}/>
+                    </div>
+                    <div>
+                        <input
+                            key="annual_income"
+                            name="annual_income"
+                            value={this.state.annual_income}
+                            onChange={this.handleInputChange}/>
+                    </div>
+                    <div>
+                        <input
+                            key="investment_strategies"
+                            name="investment_strategies"
+                            value={this.state.investment_strategies}
+                            onChange={this.handleInputChange}/>
+                    </div>
+                    <div>
+                        <input
+                            key="smsf_name"
+                            name="smsf_name"
+                            value={this.state.smsf_name}
+                            onChange={this.handleInputChange}/>
+                    </div>
+                    <div>
+                        <input
+                            key="sf_name"
+                            name="sf_name"
+                            value={this.state.sf_name}
+                            onChange={this.handleInputChange}/>
+                    </div>
+                    <div>
+                        <input
+                            key="member_account_number"
+                            name="member_account_number"
+                            value={this.state.member_account_number}
+                            onChange={this.handleInputChange}/>
+                    </div>
+                    <div>
+                        <input
+                            key="rollover"
+                            name="rollover"
+                            value={this.state.rollover}
+                            onChange={this.handleInputChange}/>
+                    </div>
+
                     <button className={classes.OkButton} onClick={this.postDataHandler}>Next</button>
                 </div>
             </div>

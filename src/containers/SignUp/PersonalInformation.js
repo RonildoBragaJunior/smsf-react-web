@@ -1,108 +1,38 @@
 import React, {Component} from 'react';
-import Input from '../../components/UI/Input/Input';
 import classes from './SignUp.module.css';
 import {connect} from 'react-redux'
 import * as actions from '../../store/actions/index';
 import Spinner from '../../components/UI/Spinner/Spinner'
-import {checkValidity} from "../../store/utility";
+
 
 class PersonalInformationController extends Component {
 
-    state = {
-        controls:{
-            place_of_residence:{
-                elementType: 'input',
-                elementConfig: {
-                    type: 'text',
-                    placeholder: 'Residential address'
-                },
-                value: '',
-                validation: {
-                    required: true,
-                },
-                valid: false,
-                touched: false
-            },
-            gender: {
-                elementType: 'select',
-                elementConfig: {
-                    options: [
-                        {value: 'G', displayValue: 'Gender'},
-                        {value: 'F', displayValue: 'Female'},
-                        {value: 'M', displayValue: 'Male'}
-                    ]
-                },
-                value: 'G',
-                validation: {},
-                valid: true
-            },
-            birth_date:{
-                elementType: 'input',
-                elementConfig: {
-                    type: 'text',
-                    placeholder: 'Birth date - YYYY-MM-DD'
-                },
-                value: '',
-                validation: {
-                    required: true,
-                },
-                valid: false,
-                touched: false
-            },
-            place_of_birth:{
-                elementType: 'input',
-                elementConfig: {
-                    type: 'text',
-                    placeholder: 'Place of birth'
-                },
-                value: '',
-                validation: {
-                    required: true,
-                },
-                valid: false,
-                touched: false
-            },
-            mothers_maiden_name:{
-                elementType: 'input',
-                elementConfig: {
-                    type: 'text',
-                    placeholder: 'Mother maiden name'
-                },
-                value: '',
-                validation: {
-                    required: true,
-                },
-                valid: false,
-                touched: false
-            }
-        }
-    }
-
-    inputChangedHandler = (event, controlName) => {
-        const updatedControls = {
-            ...this.state.controls,
-            [controlName]: {
-                ...this.state.controls[controlName],
-                value: event.target.value,
-                valid: checkValidity(event.target.value, this.state.controls[controlName].validation),
-                touched: true
-            }
+    constructor(props) {
+        super(props)
+        this.state = {
+            place_of_residence: '',
+            gender: '',
+            birth_date: '',
+            place_of_birth: '',
+            mothers_maiden_name: ''
         };
-        this.setState({controls: updatedControls});
+
+        this.handleInputChange = this.handleInputChange.bind(this);
     }
 
+    handleInputChange(event) {
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+    }
 
     postDataHandler = () => {
         let data = {
-            place_of_residence: {
-                street_name: this.state.controls.place_of_residence.value
-            },
-            gender: this.state.controls.gender.value,
-            birth_date: this.state.controls.birth_date.value,
-            place_of_birth: {
-                street_name: this.state.controls.place_of_birth.value,
-            },
-            mothers_maiden_name: this.state.controls.mothers_maiden_name.value
+            place_of_residence: {street_name: this.state.place_of_residence},
+            gender: this.state.gender,
+            birth_date: this.state.birth_date,
+            place_of_birth: {street_name: this.state.place_of_birth,},
+            mothers_maiden_name: this.state.mothers_maiden_name
         };
 
         this.props.onSignupPersonalInformation(
@@ -118,26 +48,6 @@ class PersonalInformationController extends Component {
 
 
     render () {
-        const formElementsArray = [];
-        for ( let key in this.state.controls ) {
-            formElementsArray.push( {
-                id: key,
-                config: this.state.controls[key]
-            } );
-        }
-
-        let form = formElementsArray.map( formElement => (
-            <Input
-                key={formElement.id}
-                elementType={formElement.config.elementType}
-                elementConfig={formElement.config.elementConfig}
-                value={formElement.config.value}
-                invalid={!formElement.config.valid}
-                shouldValidate={formElement.config.validation}
-                touched={formElement.config.touched}
-                changed={( event ) => this.inputChangedHandler( event, formElement.id )} />
-        ) );
-
         let errorMessage = null;
         if (this.props.error){
             errorMessage = (
@@ -151,7 +61,43 @@ class PersonalInformationController extends Component {
                 <div className={classes.PersonalInformationForm}>
                     {errorMessage}
                     <h3>Personal information</h3>
-                    {form}
+
+                    <div>
+                        <input
+                            key="place_of_residence"
+                            name="place_of_residence"
+                            value={this.state.place_of_residence}
+                            onChange={this.handleInputChange}/>
+                    </div>
+                    <div>
+                        <input
+                            key="gender"
+                            name="gender"
+                            value={this.state.gender}
+                            onChange={this.handleInputChange}/>
+                    </div>
+                    <div>
+                        <input
+                            key="birth_date"
+                            name="birth_date"
+                            value={this.state.birth_date}
+                            onChange={this.handleInputChange}/>
+                    </div>
+                    <div>
+                        <input
+                            key="place_of_birth"
+                            name="place_of_birth"
+                            value={this.state.place_of_birth}
+                            onChange={this.handleInputChange}/>
+                    </div>
+                    <div>
+                        <input
+                            key="mothers_maiden_name"
+                            name="mothers_maiden_name"
+                            value={this.state.mothers_maiden_name}
+                            onChange={this.handleInputChange}/>
+                    </div>
+
                     <button className={classes.OkButton} onClick={this.postDataHandler}>Next</button>
                 </div>
 

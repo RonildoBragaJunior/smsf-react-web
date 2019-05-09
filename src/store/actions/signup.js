@@ -33,8 +33,8 @@ export const signupDetails = (signup_details) => {
                 dispatch(signupDetailsSuccess(response.data));
             })
             .catch(error => {
-                console.log(error);
-                dispatch(signupDetailsFail(String(error)));
+                console.log(error.response);
+                dispatch(signupDetailsFail(error.response.data));
             });
     };
 };
@@ -63,17 +63,17 @@ export const signupBasicInformationFail = (response) =>{
     }
 }
 
-export const signupBasicInformation = (basic_information) => {
+export const signupBasicInformation = (uuid, basic_information) => {
     return dispatch => {
         dispatch(signupBasicInformationStart(basic_information));
 
-        axios.post('smsf/signup/', basic_information)
+        axios.patch('smsf/signup/' + uuid + '/', basic_information)
             .then(response => {
                 dispatch(signupBasicInformationSuccess(response.data));
             })
             .catch(error => {
-                console.log(error);
-                dispatch(signupBasicInformationFail(String(error)));
+                console.log(error.response);
+                dispatch(signupBasicInformationFail(error.response.data));
             });
     };
 };
@@ -110,8 +110,8 @@ export const signupPersonalInformation = (uuid, personal_information) => {
                 dispatch(signupPersonalInformationSuccess(response.data));
             })
             .catch(error => {
-                console.log(error);
-                dispatch(signupPersonalInformationFail(String(error)));
+                console.log(error.response);
+                dispatch(signupPersonalInformationFail(error.response.data));
             });
     };
 };
@@ -148,8 +148,8 @@ export const signupFundInformation = (uuid, fund_information) => {
                 dispatch(signupFundInformationSuccess(response.data));
             })
             .catch(error => {
-                console.log(error);
-                dispatch(signupFundInformationFail(String(error)));
+                console.log(error.response);
+                dispatch(signupFundInformationFail(error.response.data));
             });
     };
 };
@@ -186,8 +186,8 @@ export const signupAcceptFees = (uuid, accept_fees) => {
                 dispatch(signupAcceptFeesSuccess(response.data));
             })
             .catch(error => {
-                console.log(error);
-                dispatch(signupAcceptFeesFail(String(error)));
+                console.log(error.response);
+                dispatch(signupAcceptFeesFail(error.response.data));
             });
     };
 };
