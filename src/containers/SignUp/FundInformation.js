@@ -71,63 +71,72 @@ class PersonalInformationController extends Component {
                     {errorMessage}
                     <h3>We are almost done</h3>
 
-                    <div>
+                    <div className="fieldset">
+                        <label>Tax file number</label>
                         <input
                             key="tax_file_number"
                             name="tax_file_number"
                             value={this.state.tax_file_number}
                             onChange={this.handleInputChange}/>
                     </div>
-                    <div>
+                    <div className="fieldset">
+                        <label>Employer</label> 
                         <input
                             key="employer"
                             name="employer"
                             value={this.state.employer}
                             onChange={this.handleInputChange}/>
                     </div>
-                    <div>
+                    <div className="fieldset">
+                        <label>Occupation</label>
                         <input
                             key="occupation"
                             name="occupation"
                             value={this.state.occupation}
                             onChange={this.handleInputChange}/>
                     </div>
-                    <div>
+                    <div className="fieldset">
+                        <label>Annual income</label>
                         <input
                             key="annual_income"
                             name="annual_income"
                             value={this.state.annual_income}
                             onChange={this.handleInputChange}/>
                     </div>
-                    <div>
+                    <div className="fieldset">
+                        <label>Investment strategies</label>
                         <input
                             key="investment_strategies"
                             name="investment_strategies"
                             value={this.state.investment_strategies}
                             onChange={this.handleInputChange}/>
                     </div>
-                    <div>
+                    <div className="fieldset">
+                        <label>SMSF name</label>
                         <input
                             key="smsf_name"
                             name="smsf_name"
                             value={this.state.smsf_name}
                             onChange={this.handleInputChange}/>
                     </div>
-                    <div>
+                    <div className="fieldset">
+                        <label>SF name</label>
                         <input
                             key="sf_name"
                             name="sf_name"
                             value={this.state.sf_name}
                             onChange={this.handleInputChange}/>
                     </div>
-                    <div>
+                    <div className="fieldset">
+                        <label>Member account number</label>
                         <input
                             key="member_account_number"
                             name="member_account_number"
                             value={this.state.member_account_number}
                             onChange={this.handleInputChange}/>
                     </div>
-                    <div>
+                    <div className="fieldset">
+                        <label>Rollover</label>
                         <input
                             key="rollover"
                             name="rollover"

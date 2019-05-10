@@ -47,18 +47,22 @@ class SignupDetails extends Component {
                     {errorMessage}
                     <h3>Take your first step.</h3>
 
-                    <div>
+                    <div className="fieldset">
+                        <label>Email*</label>
                         <input
                             key="email"
                             name="email"
+                            type="email"
                             value={this.state.email}
                             onChange={this.handleInputChange}/>
                     </div>
 
-                    <div>
+                    <div className="fieldset">
+                        <label>Password*</label>
                         <input
                             key="password"
                             name="password"
+                            type="password"
                             value={this.state.password}
                             onChange={this.handleInputChange}/>
                     </div>

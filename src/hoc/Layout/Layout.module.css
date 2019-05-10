@@ -1,4 +1,51 @@
 .Content {
-    /* margin-top: 72px; */
-    height: 100%;
+  margin-bottom: 100px;
+  height: 100%;
+  display: flex;
+  padding: 0 42px;
+  justify-content: space-between;
+  max-width: 1100px;
+  align-items: flex-start;
+  margin-top: 72px;
+}
+
+.Content content {
+  width: 40%;
+  color: white;
+  margin-top: 40px;
+}
+
+content h1 {
+  font-size: 29px;
+}
+
+content ul {
+  padding-left: 0;
+}
+
+content li {
+  position: relative;
+  padding-left: 42px;
+  margin-bottom: 1em;
+  min-height: 27px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+content li::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 27px;
+  background: url(https://www.squirrelsuper.com.au/images/squirrels/daves-nut.svg) no-repeat center;
+  background-size: 24px 27px;
+}
+
+content p, content label, content ul li {
+  font-size: 18px;
+  margin-bottom: 1em;
 }

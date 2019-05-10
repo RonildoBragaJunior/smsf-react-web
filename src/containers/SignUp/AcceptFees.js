@@ -6,6 +6,12 @@ import {connect} from 'react-redux'
 import * as actions from '../../store/actions/index';
 
 class AcceptFees extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            accept: false
+        };
+    }
 
     postDataHandler = () => {
         const data = {
@@ -25,6 +31,7 @@ class AcceptFees extends Component {
 
     render () {
         let errorMessage = null;
+
         if (this.props.error){
             errorMessage = (
                 <p>{this.props.signup_basic_information_response}</p>
@@ -39,7 +46,11 @@ class AcceptFees extends Component {
                     <h1>Your last step</h1>
                     <h3>Please read carefull</h3>
                     <p><img src={certifySquirrelSuper} alt="Squirrel" /></p>
-                    <button className={classes.OkButton} onClick={this.postDataHandler}>Agree</button>
+                    <form>
+                        <input type="checkbox" value={this.state.accept} onChange={() => this.setState({accept: !this.state.accept})} className={classes.checkbox}/>
+                        <label>I agree to the <a target="_blank" rel="noopener noreferrer" href="https://s3-ap-southeast-2.amazonaws.com/squirrelsuper-website/terms-conditions/terms-conditions.component.html">Terms Conditions</a> and <a target="_blank" rel="noopener noreferrer" href="https://s3-ap-southeast-2.amazonaws.com/squirrelsuper-website/privacy-policy/privacy-policy.component.html">Privacy Policy.</a></label>
+                    </form>
+                    <button className={classes.OkButton} onClick={this.postDataHandler} disabled={!this.state.accept}>Agree</button>
                 </div>
             </div>
         );

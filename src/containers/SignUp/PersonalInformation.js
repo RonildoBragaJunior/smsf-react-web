@@ -62,35 +62,40 @@ class PersonalInformationController extends Component {
                     {errorMessage}
                     <h3>Personal information</h3>
 
-                    <div>
+                    <div className="fieldset">
+                        <label>Place of residence</label>
                         <input
                             key="place_of_residence"
                             name="place_of_residence"
                             value={this.state.place_of_residence}
                             onChange={this.handleInputChange}/>
                     </div>
-                    <div>
+                    <div className="fieldset">
+                        <label>Gender</label>
                         <input
                             key="gender"
                             name="gender"
                             value={this.state.gender}
                             onChange={this.handleInputChange}/>
                     </div>
-                    <div>
+                    <div className="fieldset">
+                        <label>Birth date</label>
                         <input
                             key="birth_date"
                             name="birth_date"
                             value={this.state.birth_date}
                             onChange={this.handleInputChange}/>
                     </div>
-                    <div>
+                    <div className="fieldset">
+                        <label>Place of bith</label>
                         <input
                             key="place_of_birth"
                             name="place_of_birth"
                             value={this.state.place_of_birth}
                             onChange={this.handleInputChange}/>
                     </div>
-                    <div>
+                    <div className="fieldset">
+                        <label>Mothers maiden name</label>
                         <input
                             key="mothers_maiden_name"
                             name="mothers_maiden_name"
