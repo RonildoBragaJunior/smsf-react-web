@@ -120,7 +120,7 @@ class PersonalInformationController extends Component {
                             onChange={this.handleInputChange}/>
                     </div>
                     <div className="fieldset">
-                        <label>Current super fund</label>
+                        <label>Current super fund name</label>
                         <input
                             key="sf_name"
                             name="sf_name"
