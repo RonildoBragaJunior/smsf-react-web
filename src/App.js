@@ -9,8 +9,6 @@ import PersonalInformation from './containers/SignUp/PersonalInformation'
 import FundInformation from './containers/SignUp/FundInformation'
 import AcceptFees from './containers/SignUp/AcceptFees'
 import BeInTouch from './containers/SignUp/BeInTouch'
-import SignupDetails from './containers/SignUp/SignupDetails'
-
 
 class App extends Component {
     render () {
@@ -18,8 +16,7 @@ class App extends Component {
             <div>
                 <Layout>
                     <Switch>
-                        <Route exact path="/" component={SignupDetails} />
-                        <Route path="/signup_details/" component={SignupDetails} />
+                        <Route exact path="/" component={BasicInformation} />
                         <Route path="/basic_information/" component={BasicInformation} />
                         <Route path="/personal_information/" component={PersonalInformation} />
                         <Route path="/fund_information/" component={FundInformation} />

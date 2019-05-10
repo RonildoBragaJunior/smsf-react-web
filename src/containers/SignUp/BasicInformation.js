@@ -8,6 +8,7 @@ class BasicInformation extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      email:"",
       first_name: "",
       middle_name: "",
       last_name: "",
@@ -34,10 +35,7 @@ class BasicInformation extends Component {
       sfunds: [{ balance: this.state.fund_balance }]
     };
 
-    this.props.onSignupBasicInformation(
-      this.props.signup_details_response.uuid,
-      data
-    );
+    this.props.onSignupBasicInformation(data);
   };
 
   componentDidUpdate() {
@@ -56,8 +54,17 @@ class BasicInformation extends Component {
         <Spinner show={this.props.loading} />
         <div className={classes.SignUpForm}>
           {errorMessage}
-          <h3>First we need some basic information</h3>
+          <h3>Take your first step</h3>
 
+          <div className="fieldset">
+            <label>Email</label>
+            <input
+                key="email"
+                name="email"
+                value={this.state.email}
+                onChange={this.handleInputChange}
+            />
+          </div>
           <div className="fieldset">
             <label>First name</label>
             <input
@@ -96,7 +103,7 @@ class BasicInformation extends Component {
             />
           </div>
           <div className="fieldset">
-            <label>Fund Balance</label>
+            <label>Current super fund balance</label>
             <input
               key="fund_balance"
               name="fund_balance"
@@ -116,14 +123,9 @@ class BasicInformation extends Component {
 
 const mapStateToProps = state => {
   return {
-    signup_details_success: state.signup.signup_details_success,
-    signup_details_response: state.signup.signup_details_response,
-
     signup_basic_information: state.signup.signup_basic_information,
-    signup_basic_information_success:
-      state.signup.signup_basic_information_success,
-    signup_basic_information_response:
-      state.signup.signup_basic_information_response,
+    signup_basic_information_success: state.signup.signup_basic_information_success,
+    signup_basic_information_response: state.signup.signup_basic_information_response,
 
     loading: state.signup.loading,
     error: state.signup.error

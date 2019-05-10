@@ -44,11 +44,18 @@ class AcceptFees extends Component {
                 <div className={classes.AcceptFeesForm}>
                     {errorMessage}
                     <h1>Your last step</h1>
-                    <h3>Please read carefull</h3>
+                    <h3>Please read carefully</h3>
                     <p><img src={certifySquirrelSuper} alt="Squirrel" /></p>
                     <form>
                         <input type="checkbox" value={this.state.accept} onChange={() => this.setState({accept: !this.state.accept})} className={classes.checkbox}/>
-                        <label>I agree to the <a target="_blank" rel="noopener noreferrer" href="https://s3-ap-southeast-2.amazonaws.com/squirrelsuper-website/terms-conditions/terms-conditions.component.html">Terms Conditions</a> and <a target="_blank" rel="noopener noreferrer" href="https://s3-ap-southeast-2.amazonaws.com/squirrelsuper-website/privacy-policy/privacy-policy.component.html">Privacy Policy.</a></label>
+                        <label>By pressing the button agree, I&nbsp;
+                            <a target="_blank" rel="noopener noreferrer" href="https://s3-ap-southeast-2.amazonaws.com/squirrelsuper-website/accept-the-fees/fee-acceptance.pdf">
+                            accept the fees
+                            </a> and agree to the&nbsp;
+                            <a target="_blank" rel="noopener noreferrer" href="https://s3-ap-southeast-2.amazonaws.com/squirrelsuper-website/terms-conditions/terms-conditions.component.html">
+                                Terms Conditions</a> and <a target="_blank" rel="noopener noreferrer" href="https://s3-ap-southeast-2.amazonaws.com/squirrelsuper-website/privacy-policy/privacy-policy.component.html">Privacy Policy</a>
+                            , which has been shown here
+                        </label>
                     </form>
                     <button className={classes.OkButton} onClick={this.postDataHandler} disabled={!this.state.accept}>Agree</button>
                 </div>

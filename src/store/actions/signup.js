@@ -1,47 +1,8 @@
 import axios from '../../axios-smsf';
 
 import * as actionTypes from './actionTypes';
-//***************** Signup details *****************
-
-export const signupDetailsStart = (signup_details) =>{
-    return {
-        type: actionTypes.SIGNUP_DT_START,
-        signup_details: signup_details,
-    }
-}
-
-export const signupDetailsSuccess = (response) =>{
-    return {
-        type: actionTypes.SIGNUP_DT_SUCCESS,
-        signup_details_response: response,
-    }
-}
-
-export const signupDetailsFail = (response) =>{
-    return {
-        type: actionTypes.SIGNUP_DT_FAIL,
-        signup_details_response: response,
-    }
-}
-
-export const signupDetails = (signup_details) => {
-    return dispatch => {
-        dispatch(signupDetailsStart(signup_details));
-
-        axios.post('smsf/signup/', signup_details)
-            .then(response => {
-                dispatch(signupDetailsSuccess(response.data));
-            })
-            .catch(error => {
-                console.log(error.response);
-                dispatch(signupDetailsFail(error.response.data));
-            });
-    };
-};
-
 
 //***************** Basic information signup *****************
-
 export const signupBasicInformationStart = (basic_information) =>{
     return {
         type: actionTypes.SIGNUP_BI_START,
@@ -63,11 +24,11 @@ export const signupBasicInformationFail = (response) =>{
     }
 }
 
-export const signupBasicInformation = (uuid, basic_information) => {
+export const signupBasicInformation = (basic_information) => {
     return dispatch => {
         dispatch(signupBasicInformationStart(basic_information));
 
-        axios.patch('smsf/signup/' + uuid + '/', basic_information)
+        axios.post('smsf/signup/', basic_information)
             .then(response => {
                 dispatch(signupBasicInformationSuccess(response.data));
             })

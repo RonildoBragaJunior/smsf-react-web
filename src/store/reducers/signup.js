@@ -22,31 +22,6 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type){
-        case actionTypes.SIGNUP_DT_START:
-            return {
-                ...state,
-                signup_details: action.signup_details,
-                loading: true,
-                error: false
-            }
-        case actionTypes.SIGNUP_DT_SUCCESS:
-            return {
-                ...state,
-                signup_details_success: true,
-                signup_details_response: action.signup_details_response,
-                loading: false,
-                error: false
-            }
-        case actionTypes.SIGNUP_DT_FAIL:
-            return {
-                ...state,
-                signup_details_success: false,
-                signup_details_response: action.signup_details_response,
-                loading: false,
-                error: true
-            }
-
-
         case actionTypes.SIGNUP_BI_START:
             return {
                 ...state,

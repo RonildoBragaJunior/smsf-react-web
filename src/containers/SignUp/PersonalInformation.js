@@ -63,7 +63,7 @@ class PersonalInformationController extends Component {
                     <h3>Personal information</h3>
 
                     <div className="fieldset">
-                        <label>Place of residence</label>
+                        <label>Residential address</label>
                         <input
                             key="place_of_residence"
                             name="place_of_residence"
@@ -87,7 +87,7 @@ class PersonalInformationController extends Component {
                             onChange={this.handleInputChange}/>
                     </div>
                     <div className="fieldset">
-                        <label>Place of bith</label>
+                        <label> City and country of birth</label>
                         <input
                             key="place_of_birth"
                             name="place_of_birth"

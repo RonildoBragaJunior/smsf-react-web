@@ -8,7 +8,7 @@ class NavigationItems extends Component {
   render() {
     return (
       <NavigationItemsUl>
-        <NavigationItem link="/signup_details" exact>SignUp</NavigationItem>
+        <NavigationItem link="/basic_information" exact>SignUp</NavigationItem>
         <NavigationItem link="/smsf">SMSF</NavigationItem>
         <NavigationItem link="/loans">Loans</NavigationItem>
         <NavigationItem link="/insurance">Insurance</NavigationItem>
