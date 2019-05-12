@@ -67,22 +67,27 @@ class PersonalInformationController extends Component {
                         <input
                             key="place_of_residence"
                             name="place_of_residence"
+                            maxLength="100"
                             value={this.state.place_of_residence}
                             onChange={this.handleInputChange}/>
                     </div>
                     <div className="fieldset">
                         <label>Gender</label>
-                        <input
+                        <select
                             key="gender"
                             name="gender"
                             value={this.state.gender}
-                            onChange={this.handleInputChange}/>
+                            onChange={this.handleInputChange}>
+                            <option value="F">Female</option>
+                            <option value="M">Male</option>
+                        </select>
                     </div>
                     <div className="fieldset">
                         <label>Birth date</label>
                         <input
                             key="birth_date"
                             name="birth_date"
+                            type="date"
                             value={this.state.birth_date}
                             onChange={this.handleInputChange}/>
                     </div>
@@ -91,6 +96,7 @@ class PersonalInformationController extends Component {
                         <input
                             key="place_of_birth"
                             name="place_of_birth"
+                            maxLength="100"
                             value={this.state.place_of_birth}
                             onChange={this.handleInputChange}/>
                     </div>
@@ -99,6 +105,7 @@ class PersonalInformationController extends Component {
                         <input
                             key="mothers_maiden_name"
                             name="mothers_maiden_name"
+                            maxLength="20"
                             value={this.state.mothers_maiden_name}
                             onChange={this.handleInputChange}/>
                     </div>

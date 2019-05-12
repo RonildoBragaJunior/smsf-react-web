@@ -59,8 +59,10 @@ class BasicInformation extends Component {
           <div className="fieldset">
             <label>Email</label>
             <input
+                type="email"
                 key="email"
                 name="email"
+                maxLength="50"
                 value={this.state.email}
                 onChange={this.handleInputChange}
             />
@@ -71,6 +73,7 @@ class BasicInformation extends Component {
               key="first_name"
               name="first_name"
               value={this.state.first_name}
+              maxLength="30"
               onChange={this.handleInputChange}
             />
           </div>
@@ -79,6 +82,7 @@ class BasicInformation extends Component {
             <input
               key="middle_name"
               name="middle_name"
+              maxLength="100"
               value={this.state.middle_name}
               onChange={this.handleInputChange}
             />
@@ -88,6 +92,7 @@ class BasicInformation extends Component {
             <input
               key="last_name"
               name="last_name"
+              maxLength="150"
               value={this.state.last_name}
               onChange={this.handleInputChange}
             />
@@ -97,7 +102,7 @@ class BasicInformation extends Component {
             <input
               key="mobile_number"
               name="mobile_number"
-              type="number"
+              maxLength="17"
               value={this.state.mobile_number}
               onChange={this.handleInputChange}
             />
@@ -107,11 +112,13 @@ class BasicInformation extends Component {
             <input
               key="fund_balance"
               name="fund_balance"
+              type="number"
+              min="1"
+              max="900000"
               value={this.state.fund_balance}
               onChange={this.handleInputChange}
             />
           </div>
-
           <button className={classes.OkButton} onClick={this.postDataHandler}>
             Next
           </button>
