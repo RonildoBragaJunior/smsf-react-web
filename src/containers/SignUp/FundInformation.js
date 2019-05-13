@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import classes from './SignUp.module.css';
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
 import * as actions from '../../store/actions/index';
-import Spinner from '../../components/UI/Spinner/Spinner'
+import Spinner from '../../components/UI/Spinner/Spinner';
+
+import {PersonalInformationForm, OkButton} from './SignUp.styles';
 
 class PersonalInformationController extends Component {
 
@@ -67,7 +68,7 @@ class PersonalInformationController extends Component {
         return (
             <div>
                 <Spinner show={this.props.loading}/>
-                <div className={classes.PersonalInformationForm}>
+                <PersonalInformationForm>
                     {errorMessage}
                     <h3>We are almost done</h3>
 
@@ -172,8 +173,8 @@ class PersonalInformationController extends Component {
                         </select>
                     </div>
 
-                    <button className={classes.OkButton} onClick={this.postDataHandler}>Next</button>
-                </div>
+                    <OkButton onClick={this.postDataHandler}>Next</OkButton>
+                </PersonalInformationForm>
             </div>
         );
     }

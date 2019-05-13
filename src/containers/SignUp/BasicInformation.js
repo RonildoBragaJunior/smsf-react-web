@@ -1,20 +1,9 @@
 import React, { Component } from "react";
-import classes from "./SignUp.module.css";
 import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
 import Spinner from "../../components/UI/Spinner/Spinner";
-import styled from "styled-components"
 
-const FirstStep = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-
-  .content-title {
-    font-size: 45px;
-    margin-bottom: .75em;
-  }
-`
+import {FirstStep, OkButton, SignUpForm, Content} from './SignUp.styles';
 
 class BasicInformation extends Component {
   constructor(props) {
@@ -64,8 +53,8 @@ class BasicInformation extends Component {
     return (
       <FirstStep>
         <Spinner show={this.props.loading} />
-        <content>
-          <h1 className="content-title">Be in control of your superannuation</h1>
+        <Content>
+          <h1>Be in control of your superannuation</h1>
           <p>An SMSF puts you in the driving seat for how your super is invested. If you have an investment strategy in mind, speak to one of our team to see if an SMSF is right for you.</p>
           <label>With a Squirrel SMSF you will:</label>
           <ul>
@@ -73,8 +62,8 @@ class BasicInformation extends Component {
             <li>Save thousands on management fees</li>
             <li>Invest your way</li>
           </ul>
-        </content>   
-        <div className={classes.SignUpForm}>
+        </Content>   
+        <SignUpForm>
           {errorMessage}
           <h3>Take your first step</h3>
 
@@ -141,10 +130,10 @@ class BasicInformation extends Component {
               onChange={this.handleInputChange}
             />
           </div>
-          <button className={classes.OkButton} onClick={this.postDataHandler}>
+          <OkButton onClick={this.postDataHandler}>
             Next
-          </button>
-        </div>
+          </OkButton>
+        </SignUpForm>
       </FirstStep>
     );
   }
