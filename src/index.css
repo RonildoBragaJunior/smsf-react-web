@@ -39,6 +39,10 @@ body {
   background-color: white;
 }
 
+.fieldset input, select {
+  font-family: 'Montserrat', sans-serif;
+}
+
 
 .fieldset label {
   font-size: 17px;
