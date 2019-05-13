@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31d18e82-2076-49c4-a413-fa4615b3701b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/containers/SignUp/SignUp.styles.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/containers/SignUp/SignUp.module.css" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/containers/SignUp/AcceptFees.js" afterPath="$PROJECT_DIR$/src/containers/SignUp/AcceptFees.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/containers/SignUp/BasicInformation.js" afterPath="$PROJECT_DIR$/src/containers/SignUp/BasicInformation.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/containers/SignUp/BeInTouch.js" afterPath="$PROJECT_DIR$/src/containers/SignUp/BeInTouch.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/containers/SignUp/FundInformation.js" afterPath="$PROJECT_DIR$/src/containers/SignUp/FundInformation.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/containers/SignUp/PersonalInformation.js" afterPath="$PROJECT_DIR$/src/containers/SignUp/PersonalInformation.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/hoc/Layout/Layout.module.css" afterPath="$PROJECT_DIR$/src/hoc/Layout/Layout.module.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -23,12 +16,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.51257586">
+    <splitter split-orientation="horizontal" split-proportion="0.5739645">
       <split-first>
-        <splitter split-orientation="horizontal" split-proportion="0.51651144">
+        <splitter split-orientation="horizontal" split-proportion="0.5674603">
           <split-first>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-              <file leaf-file-name="axios-smsf.js" pinned="false" current-in-tab="true">
+              <file leaf-file-name="axios-smsf.js" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/src/axios-smsf.js">
                   <provider selected="true" editor-type-id="text-editor">
                     <state relative-caret-position="60">
@@ -38,11 +31,11 @@
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+              <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/public/index.html">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="195">
-                      <caret line="13" column="34" lean-forward="false" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
+                    <state relative-caret-position="465">
+                      <caret line="31" column="13" lean-forward="true" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
                       <folding />
                     </state>
                   </provider>
@@ -117,9 +110,21 @@
               <file leaf-file-name="NavigationItems.js" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/components/Navigation/NavigationItems/NavigationItems.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="390">
-                      <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+                    <state relative-caret-position="120">
+                      <caret line="11" column="30" lean-forward="true" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="35" />
                       <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="NavigationItem.js" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/src/components/Navigation/NavigationItems/NavigationItem/NavigationItem.js">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="0">
+                      <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                      <folding>
+                        <element signature="e#0#26#0" expanded="true" />
+                      </folding>
                     </state>
                   </provider>
                 </entry>
@@ -145,8 +150,8 @@
           <file leaf-file-name="PersonalInformation.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/containers/SignUp/PersonalInformation.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="345">
-                  <caret line="80" column="53" lean-forward="false" selection-start-line="80" selection-start-column="53" selection-end-line="80" selection-end-column="53" />
+                <state relative-caret-position="1830">
+                  <caret line="122" column="34" lean-forward="false" selection-start-line="122" selection-start-column="34" selection-end-line="122" selection-end-column="34" />
                   <folding>
                     <element signature="e#0#39#0" expanded="true" />
                   </folding>
@@ -275,7 +280,6 @@
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/hoc/Layout/Layout.js" />
         <option value="$PROJECT_DIR$/src/index.css" />
-        <option value="$PROJECT_DIR$/public/index.html" />
         <option value="$PROJECT_DIR$/src/components/UI/Spinner/Spinner.module.css" />
         <option value="$PROJECT_DIR$/src/components/UI/Spinner/Spinner.js" />
         <option value="$PROJECT_DIR$/src/containers/Auth/Auth.module.css" />
@@ -305,13 +309,14 @@
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/store/reducers/signup.js" />
         <option value="$PROJECT_DIR$/src/store/actions/signup.js" />
-        <option value="$PROJECT_DIR$/src/components/Navigation/NavigationItems/NavigationItems.js" />
         <option value="$PROJECT_DIR$/src/containers/SignUp/AcceptFees.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/src/containers/SignUp/FundInformation.js" />
         <option value="$PROJECT_DIR$/src/containers/SignUp/BasicInformation.js" />
         <option value="$PROJECT_DIR$/src/axios-smsf.js" />
         <option value="$PROJECT_DIR$/src/containers/SignUp/PersonalInformation.js" />
+        <option value="$PROJECT_DIR$/src/components/Navigation/NavigationItems/NavigationItems.js" />
+        <option value="$PROJECT_DIR$/public/index.html" />
       </list>
     </option>
   </component>
@@ -361,7 +366,42 @@
             <path>
               <item name="squirrel-react-web" type="b2602c69:ProjectViewProjectNode" />
               <item name="squirrel-react-web" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="squirrel-react-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="squirrel-react-web" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="squirrel-react-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="squirrel-react-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="squirrel-react-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="squirrel-react-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Navigation" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="squirrel-react-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="squirrel-react-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Navigation" type="462c0819:PsiDirectoryNode" />
+              <item name="NavigationItems" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="squirrel-react-web" type="b2602c69:ProjectViewProjectNode" />
+              <item name="squirrel-react-web" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Navigation" type="462c0819:PsiDirectoryNode" />
+              <item name="NavigationItems" type="462c0819:PsiDirectoryNode" />
+              <item name="NavigationItem" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="squirrel-react-web" type="b2602c69:ProjectViewProjectNode" />
@@ -449,12 +489,12 @@
       <workItem from="1557016799489" duration="176000" />
       <workItem from="1557112906542" duration="6256000" />
       <workItem from="1557274126787" duration="26359000" />
-      <workItem from="1557456254629" duration="17352000" />
+      <workItem from="1557456254629" duration="18238000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="310619000" />
+    <option name="totallyTimeSpent" value="311505000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2560" y="-458" width="2560" height="1440" extended-state="0" />
@@ -503,13 +543,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/UI/Modal/Modal.module.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="19" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/UI/Modal/Modal.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
@@ -779,14 +812,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="34" lean-forward="false" selection-start-line="13" selection-start-column="34" selection-end-line="13" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/react-phone-number-input/index.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="818">
@@ -853,22 +878,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/axios-smsf.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="6" lean-forward="false" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Navigation/NavigationItems/NavigationItems.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/SignUp/BasicInformation.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
@@ -881,11 +890,45 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/SignUp/PersonalInformation.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="80" column="53" lean-forward="false" selection-start-line="80" selection-start-column="53" selection-end-line="80" selection-end-column="53" />
+        <state relative-caret-position="1830">
+          <caret line="122" column="34" lean-forward="false" selection-start-line="122" selection-start-column="34" selection-end-line="122" selection-end-column="34" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Navigation/NavigationItems/NavigationItem/NavigationItem.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/Navigation/NavigationItems/NavigationItems.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="11" column="30" lean-forward="true" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/axios-smsf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="6" lean-forward="false" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" column="13" lean-forward="true" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
