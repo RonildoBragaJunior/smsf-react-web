@@ -76,8 +76,9 @@ class PersonalInformationController extends Component {
                         <select
                             key="gender"
                             name="gender"
-                            value={this.state.gender}
+                            // value={this.state.gender}
                             onChange={this.handleInputChange}>
+                            <option selected disabled>Choose one</option>
                             <option value="F">Female</option>
                             <option value="M">Male</option>
                         </select>

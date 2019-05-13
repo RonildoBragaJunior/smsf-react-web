@@ -26,19 +26,9 @@ class Layout extends Component {
                 <Toolbar drawerToggleClicked={this.sideDrawerToggleHandler} />
                 <SideDrawer open={this.state.showSideDrawer} closed={this.sideDrawerClosedHandler} />
                 <main className={classes.Content}>
-                    <content>
-                        <h1>Be in control of your superannuation</h1>
-                        <p>An SMSF puts you in the driving seat for how your super is invested. If you have an investment strategy in mind, speak to one of our team to see if an SMSF is right for you.
-
-</p>
-                        <label>With a Squirrel SMSF you will:</label>
-                        <ul>
-                            <li>Take control of your super</li>
-                            <li>Save thousands on management fees</li>
-                            <li>Invest your way</li>
-                        </ul>
-                    </content>
-                    {this.props.children}
+                    <div className={classes.Limit}>
+                        {this.props.children}
+                    </div>
                 </main>
                 <footer>
                     <p className="copyright">© 2018 Squirrel. All rights reserved.</p>

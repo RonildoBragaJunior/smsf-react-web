@@ -17,13 +17,17 @@ body {
   margin: 18px 0;
 }
 
-.fieldset input {
+.fieldset input, select {
   width: calc(100% - 36px);
   font-size: 18px;
   margin-top: 10px;
   padding: 10px 18px;
   border: 1px solid #E5DDDC;
   border-radius: 2px;
+}
+
+.fieldset select {
+  width: 100%;
 }
 
 .fieldset label {

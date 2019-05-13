@@ -5,6 +5,29 @@ import certifySquirrelSuper from '../../assets/images/certify_squirrel_super.png
 import {connect} from 'react-redux'
 import * as actions from '../../store/actions/index';
 
+import styled from "styled-components";
+
+const AcceptFessCheck = styled.form`
+    display: flex;
+    align-items: flex-start;
+
+    label {
+        text-align: left;
+        margin-top: 2px;
+    }
+
+    input {
+        width: 25px;
+        height: 25px;
+        min-width: 25px;
+        min-height: 25px;
+        margin-right: 10px;
+    }
+
+    a {
+        color: #494645;
+    }
+`
 class AcceptFees extends Component {
     constructor(props) {
         super(props)
@@ -46,17 +69,17 @@ class AcceptFees extends Component {
                     <h1>Your last step</h1>
                     <h3>Please read carefully</h3>
                     <p><img src={certifySquirrelSuper} alt="Squirrel" /></p>
-                    <form>
+                    <AcceptFessCheck>
                         <input type="checkbox" value={this.state.accept} onChange={() => this.setState({accept: !this.state.accept})} className={classes.checkbox}/>
                         <label>By pressing the button agree, I&nbsp;
                             <a target="_blank" rel="noopener noreferrer" href="https://s3-ap-southeast-2.amazonaws.com/squirrelsuper-website/accept-the-fees/fee-acceptance.pdf">
                             accept the fees
                             </a> and agree to the&nbsp;
                             <a target="_blank" rel="noopener noreferrer" href="https://s3-ap-southeast-2.amazonaws.com/squirrelsuper-website/terms-conditions/terms-conditions.component.html">
-                                Terms Conditions</a> and <a target="_blank" rel="noopener noreferrer" href="https://s3-ap-southeast-2.amazonaws.com/squirrelsuper-website/privacy-policy/privacy-policy.component.html">Privacy Policy</a>
-                            , which has been shown here
+                                Terms and Conditions</a> and <a target="_blank" rel="noopener noreferrer" href="https://s3-ap-southeast-2.amazonaws.com/squirrelsuper-website/privacy-policy/privacy-policy.component.html">Privacy Policy</a>
+                            , which has been shown here.
                         </label>
-                    </form>
+                    </AcceptFessCheck>
                     <button className={classes.OkButton} onClick={this.postDataHandler} disabled={!this.state.accept}>Agree</button>
                 </div>
             </div>
