@@ -9,6 +9,11 @@ const FirstStep = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-around;
+
+  .content-title {
+    font-size: 45px;
+    margin-bottom: .75em;
+  }
 `
 
 class BasicInformation extends Component {
@@ -60,7 +65,7 @@ class BasicInformation extends Component {
       <FirstStep>
         <Spinner show={this.props.loading} />
         <content>
-          <h1>Be in control of your superannuation</h1>
+          <h1 className="content-title">Be in control of your superannuation</h1>
           <p>An SMSF puts you in the driving seat for how your super is invested. If you have an investment strategy in mind, speak to one of our team to see if an SMSF is right for you.</p>
           <label>With a Squirrel SMSF you will:</label>
           <ul>
