@@ -44,7 +44,7 @@ class BasicInformation extends Component {
       middle_name: this.state.middle_name,
       last_name: this.state.last_name,
       mobile_number: this.state.mobile_number,
-      sfunds: [{ balance: this.state.fund_balance }]
+      sfunds: [{ balance: this.state.fund_balance === '' ? 0 : this.state.fund_balance }]
     };
 
     this.props.onSignupBasicInformation(data);

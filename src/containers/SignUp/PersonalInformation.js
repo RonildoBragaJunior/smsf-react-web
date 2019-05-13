@@ -11,7 +11,7 @@ class PersonalInformationController extends Component {
         super(props)
         this.state = {
             place_of_residence: '',
-            gender: '',
+            gender: 'X',
             birth_date: '',
             place_of_birth: '',
             mothers_maiden_name: ''
@@ -76,9 +76,9 @@ class PersonalInformationController extends Component {
                         <select
                             key="gender"
                             name="gender"
-                            // value={this.state.gender}
+                            value={this.state.gender}
                             onChange={this.handleInputChange}>
-                            <option selected disabled>Choose one</option>
+                            <option disabled value="X">Choose one</option>
                             <option value="F">Female</option>
                             <option value="M">Male</option>
                         </select>
