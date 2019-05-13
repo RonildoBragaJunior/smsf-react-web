@@ -1,33 +1,11 @@
 import React, {Component} from 'react';
-import classes from './SignUp.module.css';
 import Spinner from '../../components/UI/Spinner/Spinner'
 import certifySquirrelSuper from '../../assets/images/certify_squirrel_super.png';
 import {connect} from 'react-redux'
 import * as actions from '../../store/actions/index';
 
-import styled from "styled-components";
+import {AcceptFessCheck, AcceptFessForm, OkButton} from './SignUp.styles';
 
-const AcceptFessCheck = styled.form`
-    display: flex;
-    align-items: flex-start;
-
-    label {
-        text-align: left;
-        margin-top: 2px;
-    }
-
-    input {
-        width: 25px;
-        height: 25px;
-        min-width: 25px;
-        min-height: 25px;
-        margin-right: 10px;
-    }
-
-    a {
-        color: #494645;
-    }
-`
 class AcceptFees extends Component {
     constructor(props) {
         super(props)
@@ -64,13 +42,13 @@ class AcceptFees extends Component {
         return (
             <div>
                 <Spinner show={this.props.loading}/>
-                <div className={classes.AcceptFeesForm}>
+                <AcceptFessForm>
                     {errorMessage}
                     <h1>Your last step</h1>
                     <h3>Please read carefully</h3>
                     <p><img src={certifySquirrelSuper} alt="Squirrel" /></p>
                     <AcceptFessCheck>
-                        <input type="checkbox" value={this.state.accept} onChange={() => this.setState({accept: !this.state.accept})} className={classes.checkbox}/>
+                        <input type="checkbox" value={this.state.accept} onChange={() => this.setState({accept: !this.state.accept})}/>
                         <label>By pressing the button agree, I&nbsp;
                             <a target="_blank" rel="noopener noreferrer" href="https://s3-ap-southeast-2.amazonaws.com/squirrelsuper-website/accept-the-fees/fee-acceptance.pdf">
                             accept the fees
@@ -80,8 +58,8 @@ class AcceptFees extends Component {
                             , which has been shown here.
                         </label>
                     </AcceptFessCheck>
-                    <button className={classes.OkButton} onClick={this.postDataHandler} disabled={!this.state.accept}>Agree</button>
-                </div>
+                    <OkButton onClick={this.postDataHandler} disabled={!this.state.accept}>Agree</OkButton>
+                </AcceptFessForm>
             </div>
         );
     }
