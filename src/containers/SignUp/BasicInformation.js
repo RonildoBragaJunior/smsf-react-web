@@ -8,7 +8,7 @@ import styled from "styled-components"
 const FirstStep = styled.div`
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 `
 
 class BasicInformation extends Component {
