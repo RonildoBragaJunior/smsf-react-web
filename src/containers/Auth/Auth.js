@@ -44,7 +44,7 @@ class Auth extends Component {
 
     componentDidUpdate(){
         if (this.props.token)
-            this.props.history.push({pathname: '/smsf_member/'})
+            this.props.history.push({pathname: '/customer_dashboard/'})
     }
 
     inputChangedHandler = (event, controlName) => {

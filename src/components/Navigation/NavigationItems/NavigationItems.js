@@ -12,9 +12,7 @@ class NavigationItems extends Component {
         <NavigationItem link="/smsf">SMSF</NavigationItem>
         <NavigationItem link="/loans">Loans</NavigationItem>
         <NavigationItem link="/insurance">Insurance</NavigationItem>
-        <NavigationItem link={this.props.token ? "/smsf_member/" : "/auth/"}>
-          Admin
-        </NavigationItem>
+        <NavigationItem link={this.props.token ? "/smsf_member/" : "/auth/"}>Login</NavigationItem>
       </NavigationItemsUl>
     );
   }

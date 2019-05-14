@@ -3,7 +3,7 @@ import {Route, Switch} from 'react-router-dom';
 
 import Layout from './hoc/Layout/Layout';
 import Auth from './containers/Auth/Auth';
-import SMSFMember from './containers/SMSFMember/SMSFMember';
+import Dashboard from './containers/Admin/Customer/Dashboard'
 import BasicInformation from './containers/SignUp/BasicInformation'
 import PersonalInformation from './containers/SignUp/PersonalInformation'
 import FundInformation from './containers/SignUp/FundInformation'
@@ -22,8 +22,8 @@ class App extends Component {
                         <Route path="/fund_information/" component={FundInformation} />
                         <Route path="/accept_fees/" component={AcceptFees} />
                         <Route path="/be_in_touch/" component={BeInTouch} />
-                        <Route path="/smsf_member/" component={SMSFMember} />
                         <Route path="/auth/" component={Auth} />
+                        <Route path="/customer_dashboard/" component={Dashboard} />
                     </Switch>
                 </Layout>
             </div>
