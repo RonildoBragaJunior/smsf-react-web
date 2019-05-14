@@ -29,8 +29,8 @@ const PersonalInformationForm = styled.div`
   border-radius: 3px;
   text-align: center;
 
-  @media (min-width: 600px) {
-    width: 400px;
+  @media (max-width: 800px) {
+    width: calc(100% - 70px);
   }
 `;
 
@@ -42,8 +42,12 @@ const AcceptFessForm = styled.div`
   border-radius: 3px;
   text-align: center;
 
-  @media (min-width: 600px) {
-    width: 550px;
+  @media (max-width: 800px) {
+    width: calc(100% - 70px);
+
+    img {
+      width: 220px;
+    }
   }
 `;
 
@@ -89,6 +93,12 @@ const FirstStep = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-around;
+
+  @media (max-width: 800px) {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 `;
 
 const Content = styled.div`
@@ -97,10 +107,19 @@ const Content = styled.div`
   margin-top: 40px;
   margin-right: 20px;
   max-width: 480px;
+  @media (max-width: 800px) {
+    margin: 0;
+    margin-bottom: 40px;
+    width: 100%;
+  }
 
   h1 {
     font-size: 45px;
     margin-bottom: 0.75em;
+
+    @media (max-width: 800px) {
+      font-size: 29px;
+    }
   }
 
   ul {
@@ -135,6 +154,11 @@ const Content = styled.div`
   ul li {
     font-size: 18px;
     margin-bottom: 1em;
+
+    @media (max-width: 800px) {
+      font-size: 16px;
+      margin-bottom: .75em;
+    }
   }
 `;
 
