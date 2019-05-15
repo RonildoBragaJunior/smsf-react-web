@@ -92,16 +92,12 @@ class PersonalInformationController extends Component {
                     </div>
                     <div className="fieldset">
                         <label>Occupation</label>
-                        <select
+                        <input
                             key="occupation"
                             name="occupation"
+                            maxLength="100"
                             value={this.state.occupation}
-                            onChange={this.handleInputChange}>
-                            <option value="computer programme">Computer Programmer</option>
-                            <option value="chief executive officer">Chief Executive Officer</option>
-                            <option value="chief financial officer">Chief Financial Officer</option>
-                            <option value="secretary">Secretary</option>
-                        </select>
+                            onChange={this.handleInputChange}/>
                     </div>
                     <div className="fieldset">
                         <label>Annual income</label>
@@ -168,8 +164,8 @@ class PersonalInformationController extends Component {
                             name="rollover"
                             value={this.state.rollover}
                             onChange={this.handleInputChange}>
-                            <option value="F">Full</option>
-                            <option value="P">Partial</option>
+                            <option value="F">Full Rollover: I no longer want to have Life & TPD insurance with current fund</option>
+                            <option value="P">Partial Rollover: I want to keep existing Life & TPD insurance with current fund</option>
                         </select>
                     </div>
 

@@ -35,7 +35,6 @@ class BasicInformation extends Component {
       mobile_number: this.state.mobile_number,
       sfunds: [{ balance: this.state.fund_balance === '' ? 0 : this.state.fund_balance }]
     };
-
     this.props.onSignupBasicInformation(data);
   };
 
