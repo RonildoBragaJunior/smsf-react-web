@@ -50,7 +50,7 @@ class AcceptFees extends Component {
                     <AcceptFessCheck>
                         <input type="checkbox" value={this.state.accept} onChange={() => this.setState({accept: !this.state.accept})}/>
                         <label>By pressing the button agree, I&nbsp;
-                            <a target="_blank" rel="noopener noreferrer" href="https://s3-ap-southeast-2.amazonaws.com/squirrelsuper-website/accept-the-fees/fee-acceptance.pdf">
+                            <a target="_blank" rel="noopener noreferrer" href="https://s3-ap-southeast-2.amazonaws.com/squirrelsuper-website/accept-the-fees/fee_acceptance_pricing_page.pdf">
                             accept the fees
                             </a> and agree to the&nbsp;
                             <a target="_blank" rel="noopener noreferrer" href="https://s3-ap-southeast-2.amazonaws.com/squirrelsuper-website/terms-conditions/terms-conditions.component.html">

@@ -26,7 +26,7 @@ class Dashboard extends Component {
 
     componentDidMount(){
         if(!this.props.selected_smsf_member)
-            this.props.onFetchSmsfMembers(this.props.token);
+            this.props.onFetchSmsfMember(this.props.token, );
     }
 
 
