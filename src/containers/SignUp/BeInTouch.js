@@ -9,7 +9,7 @@ class AcceptFees extends Component {
             <>
                 <AcceptFessForm>
                     <h1>Finished</h1>
-                    <img src={squirrelThrilled} alt="Squirrel" />
+                    <img className="squirrel-img" src={squirrelThrilled} alt="Squirrel" />
                     <h1>We will be in touch shortly</h1>
                 </AcceptFessForm>
             </>

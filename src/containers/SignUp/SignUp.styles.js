@@ -45,10 +45,14 @@ const AcceptFessForm = styled.div`
   text-align: center;
   max-width: 460px;
 
+  .squirrel-img {
+    width: 450px;
+  }
+
   @media (max-width: 800px) {
     width: calc(100% - 70px);
 
-    img {
+    .squirrel-img {
       width: 220px;
     }
   }
