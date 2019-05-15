@@ -19,24 +19,32 @@ body {
 
 .fieldset input {
   width: calc(100% - 36px);
-  font-size: 18px;
+  font-size: 16px;
   margin-top: 10px;
-  padding: 10px 18px;
+  padding: 10px 18px 11px 18px;
   border: 1px solid #E5DDDC;
   border-radius: 2px;
+  color: #666;
+  height: calc(56px - 20px);
+  -webkit-appearance: none;
+  font-weight: 400;
 }
 
 .fieldset select {
   width: 100%;
-  font-size: 18px;
+  font-size: 16px;
   margin-top: 10px;
-  padding: 10px 18px;
+  padding: 10px 18px 11px 18px;
   border: 1px solid #E5DDDC;
   border-radius: 2px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background-color: white;
+  color: #666;
+  height: calc(56px - 20px);
+  -webkit-appearance: none;
+  font-weight: 400;
 }
 
 .fieldset input, select {
