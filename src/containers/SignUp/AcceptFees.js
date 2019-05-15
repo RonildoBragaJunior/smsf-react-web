@@ -40,7 +40,7 @@ class AcceptFees extends Component {
         }
 
         return (
-            <div>
+            <>
                 <Spinner show={this.props.loading}/>
                 <AcceptFessForm>
                     {errorMessage}
@@ -60,7 +60,7 @@ class AcceptFees extends Component {
                     </AcceptFessCheck>
                     <OkButton onClick={this.postDataHandler} disabled={!this.state.accept}>Agree</OkButton>
                 </AcceptFessForm>
-            </div>
+            </>
         );
     }
 }

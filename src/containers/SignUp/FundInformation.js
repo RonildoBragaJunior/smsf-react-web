@@ -66,7 +66,7 @@ class PersonalInformationController extends Component {
         }
 
         return (
-            <div>
+            <>
                 <Spinner show={this.props.loading}/>
                 <PersonalInformationForm>
                     {errorMessage}
@@ -171,7 +171,7 @@ class PersonalInformationController extends Component {
 
                     <OkButton onClick={this.postDataHandler}>Next</OkButton>
                 </PersonalInformationForm>
-            </div>
+            </>
         );
     }
 }

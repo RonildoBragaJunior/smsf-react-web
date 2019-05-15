@@ -42,7 +42,7 @@ body {
   appearance: none;
   background-color: white;
   color: #666;
-  height: calc(56px - 20px);
+  height: 56px;
   -webkit-appearance: none;
   font-weight: 400;
 }

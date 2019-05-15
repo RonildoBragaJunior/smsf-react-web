@@ -15,6 +15,10 @@
   width: 100%;
 }
 
+.Limit div {
+  width: 100%;
+}
+
 @media (max-width: 800px) {
   .Main {
     width: calc(100% - 48px);

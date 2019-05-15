@@ -7,6 +7,7 @@ const SignUpForm = styled.div`
   padding: 35px;
   border-radius: 3px;
   text-align: center;
+  max-width: 460px;
 
   h3,
   h1 {
@@ -28,6 +29,7 @@ const PersonalInformationForm = styled.div`
   padding: 35px;
   border-radius: 3px;
   text-align: center;
+  max-width: 460px;
 
   @media (max-width: 800px) {
     width: calc(100% - 70px);
@@ -41,6 +43,7 @@ const AcceptFessForm = styled.div`
   padding: 35px;
   border-radius: 3px;
   text-align: center;
+  max-width: 460px;
 
   @media (max-width: 800px) {
     width: calc(100% - 70px);
@@ -87,6 +90,7 @@ const squirrelThrilled = styled.div`
   height: 100%;
   box-sizing: border-box;
   border-radius: 5px;
+  max-width: 460px;
 `;
 
 const FirstStep = styled.div`
@@ -165,6 +169,7 @@ const Content = styled.div`
 const AcceptFessCheck = styled.form`
     display: flex;
     align-items: flex-start;
+    max-width: 460px;
 
     label {
         text-align: left;

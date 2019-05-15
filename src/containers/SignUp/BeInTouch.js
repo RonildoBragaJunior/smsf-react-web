@@ -6,13 +6,13 @@ class AcceptFees extends Component {
 
     render () {
         return (
-            <div>
+            <>
                 <AcceptFessForm>
                     <h1>Finished</h1>
                     <img src={squirrelThrilled} alt="Squirrel" />
                     <h1>We will be in touch shortly</h1>
                 </AcceptFessForm>
-            </div>
+            </>
         );
     }
 }
