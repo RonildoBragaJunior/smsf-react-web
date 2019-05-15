@@ -18,7 +18,8 @@ class PersonalInformationController extends Component {
             smsf_name: '',
             sf_name: '',
             member_account_number: '',
-            rollover: ''
+            rollover: '',
+            error: ''
         };
         this.handleInputChange = this.handleInputChange.bind(this);
     }
@@ -29,27 +30,70 @@ class PersonalInformationController extends Component {
         });
     }
 
-    postDataHandler = () => {
-        let data = {
-            tax_file_number: this.state.tax_file_number,
-            employer: this.state.employer,
-            occupation: this.state.occupation,
-            annual_income: this.state.annual_income,
-            smsfund: {
-                name: this.state.smsf_name,
-                investment_strategies: [{name: this.state.investment_strategies}]
-            },
-            sfunds: [{
-                name: this.state.sf_name,
-                account_number: this.state.member_account_number,
-                rollover: this.state.rollover,
-            }]
-        };
+    checkValidity() {
+        if (this.state.tax_file_number.trim() === '') {
+            this.setState({error: 'Please enter a tax file number'});
+            return false;
+        }
+        if (this.state.employer.trim() === '') {
+            this.setState({error: 'Please enter a employer'});
+            return false;
+        }
+        if (this.state.occupation.trim() === '') {
+            this.setState({error: 'Please enter a occupation'});
+            return false;
+        }
+        if (this.state.annual_income.trim() === '') {
+            this.setState({error: 'Please enter a annual income'});
+            return false;
+        }
+        if (this.state.investment_strategies.trim() === '') {
+            this.setState({error: 'Please enter a investment strategy'});
+            return false;
+        }
+        if (this.state.smsf_name.trim() === '') {
+            this.setState({error: 'Please enter a smsf name'});
+            return false;
+        }
+        if (this.state.sf_name.trim() === '') {
+            this.setState({error: 'Please enter the name of your current fund'});
+            return false;
+        }
+        if (this.state.member_account_number.trim() === '') {
+            this.setState({error: 'Please enter a member account number'});
+            return false;
+        }
+        if (this.state.rollover.trim() === '') {
+            this.setState({error: 'Please enter a rollover option'});
+            return false;
+        }
 
-        this.props.onSignupFundInformation(
-            this.props.signup_basic_information_response.uuid,
-            data
-        );
+        return true;
+    }
+
+    postDataHandler = () => {
+        if (this.checkValidity()) {
+            const data = {
+                tax_file_number: this.state.tax_file_number,
+                employer: this.state.employer,
+                occupation: this.state.occupation,
+                annual_income: this.state.annual_income,
+                smsfund: {
+                    name: this.state.smsf_name,
+                    investment_strategies: [{name: this.state.investment_strategies}]
+                },
+                sfunds: [{
+                    name: this.state.sf_name,
+                    account_number: this.state.member_account_number,
+                    rollover: this.state.rollover,
+                }]
+            };
+
+            this.props.onSignupFundInformation(
+                this.props.signup_basic_information_response.uuid,
+                data
+            );
+        }
     }
 
     componentDidUpdate(){
@@ -63,6 +107,9 @@ class PersonalInformationController extends Component {
             errorMessage = (
                 <p>{this.props.signup_basic_information_response}</p>
             );
+        }
+        if (this.state.error) {
+            errorMessage = <p>{this.state.error}</p>;
         }
 
         return (
@@ -111,7 +158,7 @@ class PersonalInformationController extends Component {
                             onChange={this.handleInputChange}/>
                     </div>
                     <div className="fieldset">
-                        <label>Investment strategies</label>
+                        <label>Investment strategy</label>
                         <select
                             key="investment_strategies"
                             name="investment_strategies"

@@ -14,7 +14,8 @@ class PersonalInformationController extends Component {
             gender: 'X',
             birth_date: '',
             place_of_birth: '',
-            mothers_maiden_name: ''
+            mothers_maiden_name: '',
+            error: ''
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -26,19 +27,45 @@ class PersonalInformationController extends Component {
         });
     }
 
-    postDataHandler = () => {
-        let data = {
-            place_of_residence: {street_name: this.state.place_of_residence},
-            gender: this.state.gender,
-            birth_date: this.state.birth_date,
-            place_of_birth: {street_name: this.state.place_of_birth,},
-            mothers_maiden_name: this.state.mothers_maiden_name
-        };
+    checkValidity() {
+        if (this.state.place_of_residence.trim() === '') {
+            this.setState({error: 'Please enter a residential address'});
+            return false;
+        }
+        if (this.state.gender.trim() === 'X') {
+            this.setState({error: 'Please enter your gender'});
+            return false;
+        }
+        if (this.state.birth_date.trim() === '') {
+            this.setState({error: 'Please enter your date of birth'});
+            return false;
+        }
+        if (this.state.place_of_birth.trim() === '') {
+            this.setState({error: 'Please enter your city and country of birth'});
+            return false;
+        }
+        if (this.state.mothers_maiden_name.trim() === '') {
+            this.setState({error: 'Please enter your mothers maiden name'});
+            return false;
+        }
+        return true;
+    }
 
-        this.props.onSignupPersonalInformation(
-            this.props.signup_basic_information_response.uuid,
-            data
-        );
+    postDataHandler = () => {
+        if (this.checkValidity()) {
+            const data = {
+                place_of_residence: {street_name: this.state.place_of_residence},
+                gender: this.state.gender,
+                birth_date: this.state.birth_date,
+                place_of_birth: {street_name: this.state.place_of_birth,},
+                mothers_maiden_name: this.state.mothers_maiden_name
+            };
+
+            this.props.onSignupPersonalInformation(
+                this.props.signup_basic_information_response.uuid,
+                data
+            );
+        }
     }
 
     componentDidUpdate(){
@@ -53,6 +80,9 @@ class PersonalInformationController extends Component {
             errorMessage = (
                 <p>{this.props.signup_basic_information_response}</p>
             );
+        }
+        if (this.state.error) {
+            errorMessage = <p>{this.state.error}</p>;
         }
 
         return (
@@ -84,7 +114,7 @@ class PersonalInformationController extends Component {
                         </select>
                     </div>
                     <div className="fieldset">
-                        <label>Birth date</label>
+                        <label>Date of birth</label>
                         <input
                             key="birth_date"
                             name="birth_date"
@@ -93,7 +123,7 @@ class PersonalInformationController extends Component {
                             onChange={this.handleInputChange}/>
                     </div>
                     <div className="fieldset">
-                        <label> City and country of birth</label>
+                        <label>City and country of birth</label>
                         <input
                             key="place_of_birth"
                             name="place_of_birth"
