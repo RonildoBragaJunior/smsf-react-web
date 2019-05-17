@@ -5,21 +5,21 @@ import * as actionTypes from './actionTypes';
 //***************** Basic information signup *****************
 export const signupBasicInformationStart = (basic_information) =>{
     return {
-        type: actionTypes.SIGNUP_BI_START,
+        type: actionTypes.SBI_START,
         signup_basic_information: basic_information,
     }
 }
 
 export const signupBasicInformationSuccess = (response) =>{
     return {
-        type: actionTypes.SIGNUP_BI_SUCCESS,
+        type: actionTypes.SBI_SUCCESS,
         signup_basic_information_response: response,
     }
 }
 
 export const signupBasicInformationFail = (response) =>{
     return {
-        type: actionTypes.SIGNUP_BI_FAIL,
+        type: actionTypes.SBI_FAIL,
         signup_basic_information_response: response,
     }
 }
@@ -43,21 +43,21 @@ export const signupBasicInformation = (basic_information) => {
 
 export const signupPersonalInformationStart = (personal_information) =>{
     return {
-        type: actionTypes.SIGNUP_PI_START,
+        type: actionTypes.SPI_START,
         signup_personal_information: personal_information,
     }
 }
 
 export const signupPersonalInformationSuccess = (response) =>{
     return {
-        type: actionTypes.SIGNUP_PI_SUCCESS,
+        type: actionTypes.SPI_SUCCESS,
         signup_personal_information_response: response,
     }
 }
 
 export const signupPersonalInformationFail = (response) =>{
     return {
-        type: actionTypes.SIGNUP_PI_FAIL,
+        type: actionTypes.SPI_FAIL,
         signup_personal_information_response: response,
     }
 }
@@ -81,21 +81,21 @@ export const signupPersonalInformation = (uuid, personal_information) => {
 
 export const signupFundInformationStart = (fund_information) =>{
     return {
-        type: actionTypes.SIGNUP_FI_START,
+        type: actionTypes.SFI_START,
         signup_fund_information: fund_information,
     }
 }
 
 export const signupFundInformationSuccess = (response) =>{
     return {
-        type: actionTypes.SIGNUP_FI_SUCCESS,
+        type: actionTypes.SFI_SUCCESS,
         signup_fund_information_response: response,
     }
 }
 
 export const signupFundInformationFail = (response) =>{
     return {
-        type: actionTypes.SIGNUP_FI_FAIL,
+        type: actionTypes.SFI_FAIL,
         signup_fund_information_response: response,
     }
 }
@@ -119,21 +119,21 @@ export const signupFundInformation = (uuid, fund_information) => {
 
 export const signupAcceptFeesStart = (personal_information) =>{
     return {
-        type: actionTypes.SIGNUP_AF_START,
+        type: actionTypes.SAF_START,
         signup_personal_information: personal_information,
     }
 }
 
 export const signupAcceptFeesSuccess = (response) =>{
     return {
-        type: actionTypes.SIGNUP_AF_SUCCESS,
+        type: actionTypes.SAF_SUCCESS,
         signup_personal_information_response: response,
     }
 }
 
 export const signupAcceptFeesFail = (response) =>{
     return {
-        type: actionTypes.SIGNUP_AF_FAIL,
+        type: actionTypes.SAF_FAIL,
         signup_personal_information_response: response,
     }
 }

@@ -11,13 +11,17 @@ import * as serviceWorker from './serviceWorker';
 import authReducer from './store/reducers/auth';
 import smsfMemberReducer from './store/reducers/smsfMember';
 import signupReducer from './store/reducers/signup';
+import customerDashboardReducer from './store/reducers/customerDashboard';
+import staffDashboardReducer from './store/reducers/staffDashboard';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
     auth: authReducer,
+    signup: signupReducer,
+    customerDashboard: customerDashboardReducer,
+    staffDashboard: staffDashboardReducer,
     smsfMember: smsfMemberReducer,
-    signup: signupReducer
 });
 
 const store = createStore(rootReducer, composeEnhancers(

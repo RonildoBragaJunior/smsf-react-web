@@ -22,14 +22,14 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type){
-        case actionTypes.SIGNUP_BI_START:
+        case actionTypes.SBI_START:
             return {
                 ...state,
                 signup_basic_information: action.signup_basic_information,
                 loading: true,
                 error: false
             }
-        case actionTypes.SIGNUP_BI_SUCCESS:
+        case actionTypes.SBI_SUCCESS:
             return {
                 ...state,
                 signup_basic_information_success: true,
@@ -37,7 +37,7 @@ const reducer = (state = initialState, action) => {
                 loading: false,
                 error: false
             }
-        case actionTypes.SIGNUP_BI_FAIL:
+        case actionTypes.SBI_FAIL:
             return {
                 ...state,
                 signup_basic_information_success: false,
@@ -46,14 +46,14 @@ const reducer = (state = initialState, action) => {
                 error: true
             }
 
-        case actionTypes.SIGNUP_PI_START:
+        case actionTypes.SPI_START:
             return {
                 ...state,
                 signup_personal_information: action.signup_personal_information,
                 loading: true,
                 error: false
             }
-        case actionTypes.SIGNUP_PI_SUCCESS:
+        case actionTypes.SPI_SUCCESS:
             return {
                 ...state,
                 signup_personal_information_success: true,
@@ -61,7 +61,7 @@ const reducer = (state = initialState, action) => {
                 loading: false,
                 error: false
             }
-        case actionTypes.SIGNUP_PI_FAIL:
+        case actionTypes.SPI_FAIL:
             return {
                 ...state,
                 signup_personal_information_success: false,
@@ -70,14 +70,14 @@ const reducer = (state = initialState, action) => {
                 error: true
             }
 
-        case actionTypes.SIGNUP_FI_START:
+        case actionTypes.SFI_START:
             return {
                 ...state,
                 signup_fund_information: action.signup_fund_information,
                 loading: true,
                 error: false
             }
-        case actionTypes.SIGNUP_FI_SUCCESS:
+        case actionTypes.SFI_SUCCESS:
             return {
                 ...state,
                 signup_fund_information_success: true,
@@ -85,7 +85,7 @@ const reducer = (state = initialState, action) => {
                 loading: false,
                 error: false
             }
-        case actionTypes.SIGNUP_FI_FAIL:
+        case actionTypes.SFI_FAIL:
             return {
                 ...state,
                 signup_fund_information_success: false,
@@ -94,14 +94,14 @@ const reducer = (state = initialState, action) => {
                 error: true
             }
 
-        case actionTypes.SIGNUP_AF_START:
+        case actionTypes.SAF_START:
             return {
                 ...state,
                 signup_accept_fees: action.signup_accept_fees,
                 loading: true,
                 error: false
             }
-        case actionTypes.SIGNUP_AF_SUCCESS:
+        case actionTypes.SAF_SUCCESS:
             return {
                 ...state,
                 signup_accept_fees_success: true,
@@ -109,7 +109,7 @@ const reducer = (state = initialState, action) => {
                 loading: false,
                 error: false
             }
-        case actionTypes.SIGNUP_AF_FAIL:
+        case actionTypes.SAF_FAIL:
             return {
                 ...state,
                 signup_accept_fees_success: false,

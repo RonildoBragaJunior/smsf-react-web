@@ -37,10 +37,6 @@ class BasicInformation extends Component {
             this.setState({error: 'Please enter a first name'});
             return false;
         }
-        if (this.state.middle_name.trim() === '') {
-            this.setState({error: 'Please enter a middle name'});
-            return false;
-        }
         if (this.state.last_name.trim() === '') {
             this.setState({error: 'Please enter a last name'});
             return false;
@@ -166,9 +162,7 @@ class BasicInformation extends Component {
                             onChange={this.handleInputChange}
                         />
                     </div>
-                    <OkButton onClick={this.postDataHandler}>
-                        Next
-                    </OkButton>
+                    <OkButton onClick={this.postDataHandler}>Next</OkButton>
                 </SignUpForm>
             </FirstStep>
         );
@@ -180,7 +174,6 @@ const mapStateToProps = state => {
         signup_basic_information: state.signup.signup_basic_information,
         signup_basic_information_success: state.signup.signup_basic_information_success,
         signup_basic_information_response: state.signup.signup_basic_information_response,
-
         loading: state.signup.loading,
         error: state.signup.error
     };
@@ -193,7 +186,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(BasicInformation);
+export default connect(mapStateToProps, mapDispatchToProps)(BasicInformation);

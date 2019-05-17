@@ -43,7 +43,7 @@ class Auth extends Component {
     }
 
     componentDidUpdate(){
-        if (this.props.token)
+        if (this.props.user_details)
             this.props.history.push({pathname: '/customer_dashboard/'})
     }
 
@@ -112,7 +112,8 @@ class Auth extends Component {
 const mapStateToProps = state => {
     return {
         token: state.auth.token,
-        userId: state.auth.userId,
+        email: state.auth.email,
+        user_details: state.auth.user_details,
         loading: state.auth.loading,
         error: state.auth.error,
     };

@@ -14,11 +14,11 @@ class PersonalInformationController extends Component {
             employer: '',
             occupation: '',
             annual_income: '',
-            investment_strategies: '',
+            investment_strategies: 'residential property',
             smsf_name: '',
             sf_name: '',
             member_account_number: '',
-            rollover: '',
+            rollover: 'F',
             error: ''
         };
         this.handleInputChange = this.handleInputChange.bind(this);
